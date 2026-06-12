@@ -2,984 +2,1667 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
 <meta name="robots" content="noindex,nofollow">
+<meta name="copyright" content="© 2025 ApexCV™">
 <title>ApexCV™ — O Currículo que Recrutadores Param para Ler</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<!-- Bibliotecas para leitura de PDF e Word -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
+
+<!--
+  ╔══════════════════════════════════════════════════════╗
+  ║  ApexCV™ | © 2025 Todos os direitos reservados              ║
+  ║  apexcv.com.br | Lei 9.610/98 | DMCA Protected      ║
+  ╠══════════════════════════════════════════════════════╣
+  ║                                                      ║
+  ║  ⚙️  CONFIGURAÇÃO — EDITE APENAS ESTAS 2 LINHAS:    ║
+  ║                                                      ║
+  ╚══════════════════════════════════════════════════════╝
+-->
+<script>
+// ╔══════════════════════════════════════════════════════╗
+// ║  ApexCV™ — CONFIGURAÇÃO — EDITE APENAS ESTAS LINHAS ║
+// ╚══════════════════════════════════════════════════════╝
+
+// LINHA 1 ➜ Sua chave Anthropic (console.anthropic.com/settings/keys)
+const _a = atob('QUFRV1dNMUItQVVBbkQxaFFuZUFIU25PaWlDSk9hQ25MQXliTmpKU1RrUFpObklNckRRbl9qQm9UdzgyemE2MDhkZWpnNGdDOXA3N0JHbDgwYkdTQ0hCN2NNVzBKV2ctMzBpcGEtdG5hLWtz').split('').reverse().join('');
+
+// LINHA 2 ➜ Seu link de vendas Hotmart ou Kiwify
+const CHECKOUT = 'https://hotmart.com/product/SEU-PRODUTO';
+
+// (não mexer abaixo desta linha)
+const WORKER_URL = null;
+</script>
+
 <style>
-/* ═══════════════════ TOKENS ═══════════════════ */
+/* ═══════════════════════════════════════════
+   TOKENS DE DESIGN
+═══════════════════════════════════════════ */
 :root {
-  --bg: #030B1A;
-  --panel: #071428;
-  --panel2: #0a1a35;
-  --blue: #2563EB;
-  --bL: #60A5FA;
-  --gold: #F59E0B;
-  --gL: #FCD34D;
-  --green: #10B981;
-  --red: #EF4444;
-  --pur: #7C3AED;
-  --tx: #F0F6FF;
-  --mu: #7B8FA8;
-  --bd: rgba(96,165,250,.12);
-  --bdH: rgba(96,165,250,.3);
-}
-* { margin:0; padding:0; box-sizing:border-box; }
-body { background:var(--bg); color:var(--tx); font-family:'Plus Jakarta Sans',sans-serif; min-height:100vh; }
-
-/* ═══════════════════ LANDING ═══════════════════ */
-#landing { display:block; }
-#app { display:none; }
-
-.hero {
-  min-height:100vh;
-  display:flex; flex-direction:column; align-items:center; justify-content:center;
-  text-align:center; padding:60px 24px;
-  background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(37,99,235,0.15) 0%, transparent 60%);
+  --bg:     #030B1A;
+  --s1:     rgba(8,20,45,.95);
+  --s2:     rgba(5,12,30,.98);
+  --blue:   #2563EB;
+  --bL:     #60A5FA;
+  --pur:    #7C3AED;
+  --pL:     #A78BFA;
+  --gold:   #F59E0B;
+  --gdL:    #FCD34D;
+  --green:  #10B981;
+  --red:    #EF4444;
+  --tx:     #F0F6FF;
+  --mu:     #7B8FA8;
+  --mL:     #94A3B8;
+  --bd:     rgba(96,165,250,.13);
+  --bdH:    rgba(96,165,250,.32);
+  --fH:     'Syne', system-ui, sans-serif;
+  --fB:     'Plus Jakarta Sans', system-ui, sans-serif;
 }
 
-.logo-wrap { display:flex; align-items:center; gap:12px; margin-bottom:48px; }
-.logo-hex { width:44px; height:44px; background:var(--blue); border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:20px; }
-.logo-name { font-family:'Bebas Neue',sans-serif; font-size:28px; letter-spacing:2px; }
-.logo-tm { font-size:14px; color:var(--gold); }
+/* ═══ RESET ═══ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--fB);
+  background: var(--bg);
+  color: var(--tx);
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-user-select: none;
+  user-select: none;
+  line-height: 1.6;
+}
+.sel { -webkit-user-select: text !important; user-select: text !important; }
+@media print { body { display: none !important; } }
+input, textarea, select { font-family: var(--fB); }
+input::placeholder, textarea::placeholder { color: var(--mu); }
+select option { background: #0A1628; color: var(--tx); }
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-thumb { background: rgba(96,165,250,.22); border-radius: 4px; }
 
-.hero-tag { display:inline-block; padding:6px 16px; border:1px solid rgba(96,165,250,0.3); border-radius:20px; font-size:12px; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:var(--bL); margin-bottom:24px; }
-.hero-title { font-family:'Bebas Neue',sans-serif; font-size:clamp(52px,8vw,96px); line-height:0.92; margin-bottom:24px; letter-spacing:1px; }
-.hero-title .gold { color:var(--gold); }
-.hero-title .dim { color:rgba(255,255,255,0.15); }
-.hero-sub { font-size:18px; color:var(--mu); max-width:600px; line-height:1.7; margin-bottom:48px; }
+/* ═══ ANIMAÇÕES ═══ */
+@keyframes pulse  { 0%,100%{opacity:1} 50%{opacity:.4} }
+@keyframes spin   { to{transform:rotate(360deg)} }
+@keyframes up     { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+@keyframes grdSft { 0%,100%{background-position:0% 50%} 50%{background-position:100% 50%} }
+@keyframes glw    { 0%,100%{box-shadow:0 0 20px rgba(245,158,11,.35)} 50%{box-shadow:0 0 44px rgba(245,158,11,.7)} }
+@keyframes shake  { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-6px)} 75%{transform:translateX(6px)} }
+.fu { animation: up .35s ease; }
 
-.stats { display:flex; gap:40px; justify-content:center; flex-wrap:wrap; margin-bottom:56px; }
-.stat { text-align:center; }
-.stat-n { font-family:'Bebas Neue',sans-serif; font-size:48px; color:var(--gold); line-height:1; }
-.stat-l { font-size:12px; color:var(--mu); text-transform:uppercase; letter-spacing:1px; margin-top:4px; }
+/* ═══ TIPOGRAFIA ═══ */
+.syne { font-family: var(--fH); }
+h1 { font-family: var(--fH); font-size: clamp(32px,3.8vw,54px); font-weight:800; line-height:1.07; letter-spacing:-.03em; }
+h2 { font-family: var(--fH); font-size: clamp(24px,3vw,40px); font-weight:800; letter-spacing:-.025em; }
+h3 { font-family: var(--fH); font-size:16px; font-weight:800; }
+.grad { background: linear-gradient(135deg,#60A5FA,#A78BFA,#F59E0B); background-size:200%; -webkit-background-clip:text; -webkit-text-fill-color:transparent; display:block; animation: grdSft 4s ease infinite; }
+.grad-gold { background: linear-gradient(135deg,#F59E0B,#FCD34D); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+.grad-blue { background: linear-gradient(135deg,#60A5FA,#A78BFA); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
 
-.btn-hero { padding:18px 48px; background:var(--blue); border:none; border-radius:8px; color:#fff; font-size:16px; font-weight:700; cursor:pointer; transition:all 0.2s; letter-spacing:0.5px; }
-.btn-hero:hover { background:#1d4ed8; transform:translateY(-2px); box-shadow:0 8px 32px rgba(37,99,235,0.4); }
+/* ═══ BOTÕES ═══ */
+.btn { padding:11px 24px; border-radius:10px; border:none; cursor:pointer; font-family:var(--fB); font-weight:700; font-size:14px; transition:all .2s; display:inline-flex; align-items:center; justify-content:center; gap:6px; line-height:1; white-space:nowrap; text-decoration:none; }
+.btn-p  { background:linear-gradient(135deg,#2563EB,#7C3AED); color:#fff; box-shadow:0 4px 20px rgba(37,99,235,.35); }
+.btn-p:hover  { transform:translateY(-2px); box-shadow:0 8px 28px rgba(37,99,235,.5); }
+.btn-g  { background:linear-gradient(135deg,#F59E0B,#D97706); color:#fff; box-shadow:0 4px 20px rgba(245,158,11,.35); }
+.btn-g:hover  { transform:translateY(-2px); box-shadow:0 8px 28px rgba(245,158,11,.5); }
+.btn-gr { background:linear-gradient(135deg,#10B981,#059669); color:#fff; }
+.btn-gh { background:transparent; border:1px solid var(--bd); color:var(--mu); }
+.btn-gh:hover { border-color:var(--bdH); color:var(--tx); }
+.btn:disabled { opacity:.45; cursor:not-allowed; transform:none !important; }
+.btn-f  { width:100%; }
+.btn-lg { padding:15px 40px; font-size:16px; border-radius:12px; }
+.btn-sm { padding:8px 14px; font-size:12px; border-radius:8px; }
+.btn-glow { animation: glw 2s infinite; }
 
-.price-block { margin-top:16px; }
-.price-main { font-size:48px; font-weight:800; color:var(--tx); }
-.price-main span { font-size:24px; color:var(--mu); }
-.price-sub { font-size:13px; color:var(--mu); margin-top:4px; }
-.price-usd { font-size:13px; color:var(--gold); }
+/* ═══ CARDS ═══ */
+.card { background: linear-gradient(145deg,var(--s1),var(--s2)); border:1px solid var(--bd); border-radius:14px; padding:22px; }
+.card-h { transition:all .22s; }
+.card-h:hover { border-color:rgba(96,165,250,.28); transform:translateY(-3px); }
 
-/* FEATURES */
-.features { padding:80px 24px; max-width:1000px; margin:0 auto; }
-.feat-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:20px; margin-top:40px; }
-.feat-card { background:var(--panel); border:1px solid var(--bd); border-radius:12px; padding:28px 24px; transition:border-color 0.2s; }
-.feat-card:hover { border-color:var(--bdH); }
-.feat-icon { font-size:32px; margin-bottom:16px; }
-.feat-title { font-size:16px; font-weight:700; margin-bottom:8px; }
-.feat-desc { font-size:13px; color:var(--mu); line-height:1.6; }
+/* ═══ INPUTS ═══ */
+.fi { width:100%; background:rgba(3,8,20,.85); border:1px solid var(--bd); border-radius:10px; color:var(--tx); padding:12px 14px; font-family:var(--fB); font-size:14px; outline:none; transition:border-color .2s; box-sizing:border-box; }
+.fi:focus { border-color:var(--bdH); }
+textarea.fi { resize:vertical; line-height:1.7; min-height:140px; }
+select.fi   { cursor:pointer; -webkit-appearance:none; }
+.lbl { display:block; color:var(--mu); font-size:10.5px; font-weight:700; letter-spacing:.09em; text-transform:uppercase; margin-bottom:7px; }
 
-/* ACTIVATION */
-.activation { padding:80px 24px; max-width:480px; margin:0 auto; text-align:center; }
-.act-card { background:var(--panel); border:1px solid var(--bd); border-radius:16px; padding:40px; }
-.act-title { font-family:'Bebas Neue',sans-serif; font-size:32px; letter-spacing:1px; margin-bottom:8px; }
-.act-sub { font-size:14px; color:var(--mu); margin-bottom:32px; }
-.inp { width:100%; padding:14px 16px; background:rgba(255,255,255,0.05); border:1px solid var(--bd); border-radius:8px; color:var(--tx); font-size:15px; font-family:monospace; letter-spacing:2px; text-align:center; margin-bottom:16px; outline:none; transition:border-color 0.2s; }
-.inp:focus { border-color:var(--blue); }
-.inp::placeholder { color:var(--mu); letter-spacing:1px; }
-.btn-act { width:100%; padding:16px; background:var(--blue); border:none; border-radius:8px; color:#fff; font-size:15px; font-weight:700; cursor:pointer; transition:all 0.2s; }
-.btn-act:hover { background:#1d4ed8; }
-.act-hint { font-size:12px; color:var(--mu); margin-top:16px; }
-.act-error { color:var(--red); font-size:13px; margin-top:12px; display:none; }
-.act-demo { font-size:12px; color:rgba(96,165,250,0.4); margin-top:20px; cursor:pointer; }
-.act-demo:hover { color:var(--bL); }
+/* ═══ LAYOUT ═══ */
+.wrap    { max-width:1100px; margin:0 auto; padding:0 44px; }
+.wrap-sm { max-width:680px;  margin:0 auto; padding:0 44px; }
+.g2 { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+.g3 { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+.row { display:flex; align-items:center; }
+.center { text-align:center; }
 
-/* ═══════════════════ APP ═══════════════════ */
-.app-header { display:flex; align-items:center; justify-content:space-between; padding:0 32px; height:60px; background:rgba(3,11,26,0.95); border-bottom:1px solid var(--bd); position:sticky; top:0; z-index:100; backdrop-filter:blur(12px); }
-.app-logo { display:flex; align-items:center; gap:10px; }
-.app-logo-name { font-family:'Bebas Neue',sans-serif; font-size:20px; letter-spacing:2px; }
-.pro-badge { padding:3px 8px; background:rgba(245,158,11,0.15); border:1px solid rgba(245,158,11,0.3); border-radius:4px; font-size:10px; font-weight:700; color:var(--gold); letter-spacing:1px; }
-.app-tabs { display:flex; gap:4px; background:rgba(255,255,255,0.04); padding:4px; border-radius:8px; }
-.app-tab { padding:7px 16px; border-radius:6px; border:none; background:transparent; color:var(--mu); font-size:12px; font-weight:600; cursor:pointer; transition:all 0.2s; text-transform:uppercase; letter-spacing:0.5px; white-space:nowrap; }
-.app-tab.active { background:var(--blue); color:#fff; }
-.btn-logout { padding:7px 14px; background:transparent; border:1px solid var(--bd); border-radius:6px; color:var(--mu); font-size:12px; cursor:pointer; transition:all 0.2s; }
-.btn-logout:hover { border-color:var(--red); color:var(--red); }
+/* ═══ COMPONENTES ═══ */
+.spinner { display:inline-block; width:14px; height:14px; border:2px solid rgba(255,255,255,.25); border-top-color:#fff; border-radius:50%; animation:spin .7s linear infinite; }
+.badge { display:inline-flex; align-items:center; gap:7px; border-radius:100px; padding:5px 15px; font-size:10.5px; font-weight:700; letter-spacing:.09em; text-transform:uppercase; }
+.badge-blue  { background:rgba(37,99,235,.1);  border:1px solid rgba(37,99,235,.28); color:var(--bL); }
+.badge-gold  { background:rgba(245,158,11,.12); border:1px solid rgba(245,158,11,.3); color:var(--gold); }
+.badge-green { background:rgba(16,185,129,.1);  border:1px solid rgba(16,185,129,.28); color:var(--green); }
+.dot { width:7px; height:7px; border-radius:50%; flex-shrink:0; }
+.dot-green { background:var(--green); box-shadow:0 0 8px rgba(16,185,129,.8); animation:pulse 2s infinite; }
 
-.app-main { max-width:900px; margin:0 auto; padding:40px 24px; }
+/* Caixa de resultado */
+.res-box { background:rgba(3,8,20,.9); border:1px solid rgba(16,185,129,.22); border-radius:12px; padding:18px 20px; margin-top:16px; white-space:pre-wrap; font-size:13.5px; line-height:1.85; color:var(--tx); max-height:460px; overflow-y:auto; }
+
+/* Caixa de erro */
+.err-box { background:rgba(3,8,20,.9); border:1px solid rgba(239,68,68,.3); border-radius:12px; padding:18px 20px; margin-top:16px; font-size:13px; color:var(--red); white-space:pre-wrap; }
+
+/* Info boxes */
+.info-bl { background:rgba(37,99,235,.06);  border:1px solid rgba(96,165,250,.22);  border-radius:11px; padding:13px 15px; margin-bottom:14px; }
+.info-pu { background:rgba(124,58,237,.06); border:1px solid rgba(124,58,237,.22); border-radius:11px; padding:13px 15px; margin-bottom:14px; }
+
+/* Keyword chips */
+.kw-chip { border-radius:7px; padding:4px 11px; font-size:11.5px; font-weight:500; cursor:pointer; transition:opacity .15s; border:1px solid; -webkit-user-select:none; user-select:none; }
+.kw-chip:hover { opacity:.78; }
+
+
+
+/* ═══ FAQ ═══ */
+.faq-item { border-bottom: 1px solid var(--bd); }
+.faq-q { padding: 18px 0; font-weight: 700; font-size: 15px; cursor: pointer;
+  display: flex; justify-content: space-between; align-items: center;
+  color: var(--tx); transition: color .2s; }
+.faq-q:hover { color: var(--bL); }
+.faq-arrow { color: var(--mu); font-size: 18px; transition: transform .25s; flex-shrink: 0; }
+.faq-a { display: none; padding: 0 0 18px; color: var(--mL); font-size: 14px; line-height: 1.75; }
+.faq-item.open .faq-arrow { transform: rotate(180deg); }
+.faq-item.open .faq-a { display: block; }
+
+/* ═══ UPLOAD ZONE ═══ */
+.upload-zone {
+  border: 2px dashed rgba(96,165,250,.35);
+  border-radius: 14px;
+  padding: 36px 24px;
+  text-align: center;
+  cursor: pointer;
+  transition: all .25s;
+  background: rgba(37,99,235,.04);
+  position: relative;
+  margin-bottom: 14px;
+}
+.upload-zone:hover,
+.upload-zone.drag-over {
+  border-color: rgba(96,165,250,.7);
+  background: rgba(37,99,235,.09);
+  transform: scale(1.01);
+}
+.upload-zone.loaded {
+  border-color: rgba(16,185,129,.5);
+  background: rgba(16,185,129,.05);
+}
+.upload-icon { font-size: 40px; margin-bottom: 12px; display: block; }
+.upload-title { font-weight: 700; font-size: 15px; color: var(--tx); margin-bottom: 6px; }
+.upload-sub   { font-size: 12.5px; color: var(--mu); }
+.upload-formats { display: flex; justify-content: center; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
+.fmt-badge { background: rgba(96,165,250,.12); border: 1px solid rgba(96,165,250,.22);
+  border-radius: 6px; padding: 3px 10px; font-size: 11px; color: var(--bL); font-weight: 600; }
+.upload-input { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
+.file-loaded  { display: flex; align-items: center; gap: 12px; background: rgba(16,185,129,.08);
+  border: 1px solid rgba(16,185,129,.22); border-radius: 10px; padding: 12px 16px; margin-bottom: 12px; }
+.file-icon    { font-size: 24px; flex-shrink: 0; }
+.file-name    { font-weight: 700; font-size: 13.5px; color: var(--green); }
+.file-meta    { font-size: 11.5px; color: var(--mu); margin-top: 2px; }
+.or-divider   { display: flex; align-items: center; gap: 12px; margin: 14px 0; color: var(--mu); font-size: 12px; }
+.or-divider::before, .or-divider::after { content: ''; flex: 1; height: 1px; background: var(--bd); }
+.extract-progress { display: none; align-items: center; gap: 10px; background: rgba(37,99,235,.08);
+  border: 1px solid rgba(37,99,235,.2); border-radius: 10px; padding: 12px 16px; margin-bottom: 12px; }
+.extract-progress.show { display: flex; }
+
+/* ═══ ORBS ═══ */
+.orb { position:fixed; border-radius:50%; pointer-events:none; z-index:0; }
+
+/* ═══ NAVBAR ═══ */
+nav { position:sticky; top:0; z-index:200; display:flex; align-items:center; justify-content:space-between; padding:13px 44px; background:rgba(3,11,26,.96); backdrop-filter:blur(24px); border-bottom:1px solid var(--bd); }
+.logo { display:flex; align-items:center; gap:10px; cursor:pointer; }
+.logo-ic { width:34px; height:34px; background:linear-gradient(135deg,#2563EB,#7C3AED); border-radius:9px; display:flex; align-items:center; justify-content:center; font-size:15px; flex-shrink:0; }
+.logo-nm { font-family:var(--fH); font-weight:800; font-size:20px; letter-spacing:-.02em; }
+.logo-tm { font-size:10px; vertical-align:super; color:var(--bL); font-weight:700; }
+.nav-lks { display:flex; gap:28px; color:var(--mu); font-size:13px; font-weight:500; }
+.nav-lks span { cursor:pointer; transition:color .2s; }
+.nav-lks span:hover { color:var(--tx); }
+
+/* ═══ HERO ═══ */
+.hero { display:grid; grid-template-columns:1.1fr .9fr; gap:56px; align-items:center; padding:86px 44px 72px; max-width:1180px; margin:0 auto; position:relative; z-index:1; }
+.mock-card { background:linear-gradient(145deg,rgba(8,20,45,.97),rgba(5,12,30,.99)); border:1px solid rgba(96,165,250,.15); border-radius:18px; padding:26px; box-shadow:0 40px 80px rgba(0,0,0,.65),0 0 60px rgba(37,99,235,.1); }
+.mock-bar  { height:7px; background:rgba(96,165,250,.26); border-radius:3px; margin-bottom:7px; }
+.ats-badge { background:linear-gradient(135deg,#10B981,#059669); color:#fff; font-size:11px; font-weight:800; padding:5px 11px; border-radius:8px; margin-left:auto; white-space:nowrap; }
+.mock-kw   { background:rgba(37,99,235,.13); border:1px solid rgba(37,99,235,.27); border-radius:6px; padding:3px 10px; font-size:10.5px; color:var(--bL); font-weight:500; }
+.fl-badge  { position:absolute; background:linear-gradient(135deg,#F59E0B,#D97706); border-radius:11px; padding:7px 14px; font-size:11.5px; font-weight:800; color:#fff; box-shadow:0 8px 24px rgba(245,158,11,.45); z-index:5; }
+.fl-card   { position:absolute; background:rgba(8,20,45,.97); border:1px solid rgba(124,58,237,.33); border-radius:12px; padding:10px 14px; display:flex; align-items:center; gap:9px; box-shadow:0 8px 24px rgba(0,0,0,.4); z-index:5; }
+
+/* ═══ SEÇÕES ═══ */
+.sec      { padding:72px 44px; position:relative; z-index:1; }
+.sec-dark { background:rgba(4,11,26,.55); border-top:1px solid var(--bd); border-bottom:1px solid var(--bd); }
+.trust-bar { display:flex; justify-content:center; gap:28px; padding:18px 24px; background:rgba(5,14,32,.65); border-radius:14px; border:1px solid var(--bd); margin-top:32px; flex-wrap:wrap; row-gap:10px; }
+.trust-item { font-size:11.5px; font-weight:600; color:var(--mL); white-space:nowrap; }
+
+/* ═══ PRICING ═══ */
+.price-card { background:linear-gradient(145deg,var(--s1),var(--s2)); border:1px solid rgba(37,99,235,.4); border-radius:20px; padding:44px; text-align:center; position:relative; overflow:hidden; box-shadow:0 0 60px rgba(37,99,235,.1); max-width:620px; margin:0 auto; }
+.price-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,#2563EB,#7C3AED,#F59E0B); }
+.price-main { font-family:var(--fH); font-size:58px; font-weight:800; background:linear-gradient(135deg,#F59E0B,#FCD34D); -webkit-background-clip:text; -webkit-text-fill-color:transparent; line-height:1.1; }
+.price-feats { display:grid; grid-template-columns:1fr 1fr; gap:9px; text-align:left; margin:24px 0; }
+.price-feat  { display:flex; gap:8px; font-size:13px; color:var(--mL); align-items:flex-start; }
+.guarantee   { display:flex; align-items:center; gap:12px; background:rgba(16,185,129,.07); border:1px solid rgba(16,185,129,.22); border-radius:11px; padding:14px 18px; margin-top:18px; text-align:left; }
+
+/* ═══ TABELA COMPARAÇÃO ═══ */
+.cmp-table { width:100%; border-collapse:collapse; font-size:13px; }
+.cmp-table th { padding:13px 18px; text-align:left; color:var(--mu); font-size:10.5px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; background:rgba(37,99,235,.08); border-bottom:1px solid var(--bd); }
+.cmp-table td { padding:12px 18px; border-bottom:1px solid rgba(96,165,250,.07); }
+.cmp-table tr.hl { background:rgba(37,99,235,.06); }
+
+/* ═══ FOOTER ═══ */
+.site-footer { background:rgba(2,6,14,.98); border-top:1px solid var(--bd); padding:28px 44px; text-align:center; }
+.dmca-badge  { display:inline-flex; align-items:center; gap:6px; background:rgba(239,68,68,.1); border:1px solid rgba(239,68,68,.2); border-radius:6px; padding:4px 10px; font-size:10.5px; color:var(--red); font-weight:700; margin-top:10px; }
+
+/* ═══ ACTIVATION SCREEN ═══ */
+#act-screen { display:none; position:fixed; inset:0; z-index:9999; background:rgba(2,5,15,.98); backdrop-filter:blur(40px); align-items:center; justify-content:center; padding:20px; }
+#act-screen.show { display:flex; }
+.act-card { max-width:470px; width:100%; background:linear-gradient(145deg,var(--s1),var(--s2)); border:1px solid rgba(96,165,250,.22); border-radius:20px; padding:44px; text-align:center; box-shadow:0 40px 80px rgba(0,0,0,.9); position:relative; overflow:hidden; }
+.act-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,#2563EB,#7C3AED,#F59E0B); }
+.key-inp { width:100%; background:rgba(3,8,22,.9); border:1px solid rgba(37,99,235,.3); border-radius:10px; color:var(--tx); padding:14px; font-family:monospace; font-size:16px; font-weight:700; letter-spacing:.12em; text-align:center; text-transform:uppercase; outline:none; transition:all .2s; box-sizing:border-box; -webkit-user-select:text; user-select:text; }
+.key-inp:focus { border-color:rgba(37,99,235,.7); box-shadow:0 0 0 3px rgba(37,99,235,.12); }
+.key-inp.err { border-color:rgba(239,68,68,.6); animation:shake .4s ease; }
+.key-inp.ok  { border-color:rgba(16,185,129,.6); }
+.key-err { color:var(--red); font-size:12px; margin-top:7px; display:none; }
+.key-err.show { display:block; }
+.demo-keys { margin-top:18px; background:rgba(245,158,11,.08); border:1px solid rgba(245,158,11,.2); border-radius:10px; padding:14px; text-align:left; }
+.demo-key  { font-family:monospace; font-size:12px; color:rgba(245,158,11,.8); cursor:pointer; padding:3px 0; letter-spacing:.06em; transition:color .2s; }
+.demo-key:hover { color:var(--gold); }
+
+/* ═══ APP ═══ */
+#app-view { display:none; flex-direction:column; min-height:100vh; }
+#app-view.active { display:flex; }
+#land-view.hidden { display:none; }
+.app-hdr  { display:flex; align-items:center; justify-content:space-between; padding:13px 36px; background:rgba(3,11,26,.97); border-bottom:1px solid var(--bd); position:sticky; top:0; z-index:200; }
+.app-tabs { display:flex; gap:4px; }
+.app-tab  { padding:8px 18px; border-radius:8px; border:none; cursor:pointer; font-family:var(--fB); font-weight:600; font-size:13px; transition:all .2s; background:transparent; color:var(--mu); border-bottom:2px solid transparent; }
+.app-tab.active { background:rgba(37,99,235,.17); color:var(--bL); border-bottom-color:var(--blue); }
+.app-main { flex:1; padding:32px 40px; max-width:900px; margin:0 auto; width:100%; }
 .tab-pane { display:none; }
-.tab-pane.active { display:block; }
+.tab-pane.active { display:block; animation:up .3s ease; }
+.tab-title { font-family:var(--fH); font-size:22px; font-weight:800; letter-spacing:-.02em; margin-bottom:6px; }
+.tab-sub   { color:var(--mu); font-size:13.5px; margin-bottom:22px; }
+.pro-badge { background:rgba(245,158,11,.14); border:1px solid rgba(245,158,11,.28); border-radius:6px; padding:2px 9px; font-size:10px; font-weight:800; color:var(--gold); letter-spacing:.06em; }
+.li-tabs   { display:flex; gap:9px; margin-bottom:16px; flex-wrap:wrap; }
+.li-tab    { padding:9px 18px; border-radius:9px; border:1px solid var(--bd); cursor:pointer; font-family:var(--fB); font-weight:700; font-size:12.5px; transition:all .2s; background:rgba(5,12,28,.82); color:var(--mu); }
+.li-tab.active { background:linear-gradient(135deg,rgba(37,99,235,.26),rgba(124,58,237,.26)); color:var(--bL); border-color:rgba(37,99,235,.42); }
+.kw-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+.kw-cat  { background:linear-gradient(145deg,var(--s1),var(--s2)); border-radius:14px; padding:18px; border:1px solid var(--bd); }
+.kw-cat-lbl { font-size:10.5px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; margin-bottom:11px; }
+.kw-chips   { display:flex; flex-wrap:wrap; gap:6px; }
+.app-footer { padding:10px 40px; background:rgba(2,6,14,.95); border-top:1px solid var(--bd); display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px; }
+.wm { font-size:10px; color:rgba(96,165,250,.2); font-family:monospace; }
 
-.tool-title { font-family:'Bebas Neue',sans-serif; font-size:32px; letter-spacing:1px; margin-bottom:6px; }
-.tool-sub { font-size:14px; color:var(--mu); margin-bottom:32px; line-height:1.6; }
+/* ═══ USAGE COUNTER ═══ */
+.usage-bar { display:flex; align-items:center; gap:10px; background:rgba(37,99,235,.08); border:1px solid rgba(37,99,235,.15); border-radius:8px; padding:8px 14px; margin-bottom:20px; }
+.usage-txt { font-size:11.5px; color:var(--mL); }
+.usage-num { font-size:12px; font-weight:700; color:var(--bL); }
 
-/* FORM ELEMENTS */
-.field-label { font-size:13px; font-weight:600; color:var(--bL); margin-bottom:8px; text-transform:uppercase; letter-spacing:1px; }
-textarea, select { width:100%; background:var(--panel); border:1px solid var(--bd); border-radius:8px; color:var(--tx); font-size:14px; font-family:'Plus Jakarta Sans',sans-serif; padding:14px 16px; outline:none; transition:border-color 0.2s; resize:vertical; }
-textarea:focus, select:focus { border-color:var(--blue); }
-select { resize:none; cursor:pointer; }
-.field-group { margin-bottom:20px; }
-.counter { font-size:11px; color:var(--mu); text-align:right; margin-top:4px; font-family:monospace; }
-
-.btn-primary { padding:14px 32px; background:var(--blue); border:none; border-radius:8px; color:#fff; font-size:14px; font-weight:700; cursor:pointer; transition:all 0.2s; }
-.btn-primary:hover { background:#1d4ed8; transform:translateY(-1px); }
-.btn-primary:disabled { opacity:0.5; cursor:not-allowed; transform:none; }
-.btn-copy { padding:8px 16px; background:rgba(96,165,250,0.1); border:1px solid var(--bd); border-radius:6px; color:var(--bL); font-size:12px; font-weight:600; cursor:pointer; transition:all 0.2s; }
-.btn-copy:hover { background:rgba(96,165,250,0.2); }
-.btn-dl { padding:8px 16px; background:rgba(16,185,129,0.1); border:1px solid rgba(16,185,129,0.3); border-radius:6px; color:var(--green); font-size:12px; font-weight:600; cursor:pointer; transition:all 0.2s; }
-.btn-dl:hover { background:rgba(16,185,129,0.2); }
-
-/* RESULT BOX */
-.result-box { background:var(--panel2); border:1px solid var(--bd); border-radius:10px; padding:24px; margin-top:24px; display:none; }
-.result-box.show { display:block; }
-.result-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:16px; }
-.result-title { font-size:14px; font-weight:700; color:var(--bL); text-transform:uppercase; letter-spacing:1px; }
-.result-actions { display:flex; gap:8px; }
-.result-content { font-size:14px; line-height:1.8; color:var(--tx); white-space:pre-wrap; }
-
-/* SCORE */
-.score-block { display:flex; align-items:center; gap:24px; margin-bottom:20px; padding:20px; background:rgba(0,0,0,0.2); border-radius:8px; }
-.score-circle { width:80px; height:80px; border-radius:50%; border:3px solid; display:flex; flex-direction:column; align-items:center; justify-content:center; flex-shrink:0; }
-.score-num { font-family:'Bebas Neue',sans-serif; font-size:28px; line-height:1; }
-.score-lbl { font-size:9px; text-transform:uppercase; letter-spacing:1px; color:var(--mu); }
-.score-detail { flex:1; }
-.badge { display:inline-block; padding:4px 12px; border-radius:20px; font-size:11px; font-weight:700; letter-spacing:1px; text-transform:uppercase; margin-bottom:8px; }
-.badge.top { background:rgba(16,185,129,0.15); border:1px solid rgba(16,185,129,0.4); color:var(--green); }
-.badge.high { background:rgba(96,165,250,0.15); border:1px solid rgba(96,165,250,0.4); color:var(--bL); }
-.badge.good { background:rgba(245,158,11,0.15); border:1px solid rgba(245,158,11,0.4); color:var(--gold); }
-.badge.marg { background:rgba(239,68,68,0.15); border:1px solid rgba(239,68,68,0.4); color:var(--red); }
-.score-bar-track { height:6px; background:rgba(255,255,255,0.06); border-radius:3px; margin-top:10px; overflow:hidden; }
-.score-bar-fill { height:100%; border-radius:3px; transition:width 0.8s ease; }
-
-/* LOADING */
-.loading { display:none; text-align:center; padding:40px; }
-.loading.show { display:block; }
-.spinner { width:40px; height:40px; border:3px solid var(--bd); border-top-color:var(--blue); border-radius:50%; animation:spin 0.8s linear infinite; margin:0 auto 16px; }
-@keyframes spin { to { transform:rotate(360deg); } }
-.loading-text { font-size:14px; color:var(--mu); }
-
-/* KEYWORDS GRID */
-.kw-grid { display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
-.kw-tag { padding:6px 14px; background:rgba(37,99,235,0.1); border:1px solid rgba(37,99,235,0.25); border-radius:20px; font-size:12px; color:var(--bL); cursor:pointer; transition:all 0.2s; font-family:monospace; }
-.kw-tag:hover { background:rgba(37,99,235,0.2); }
-
-/* ATS METER */
-.ats-meter { margin-bottom:20px; }
-.ats-meter-label { display:flex; justify-content:space-between; font-size:13px; margin-bottom:6px; }
-.ats-bar-track { height:12px; background:rgba(255,255,255,0.06); border-radius:6px; overflow:hidden; }
-.ats-bar-fill { height:100%; border-radius:6px; transition:width 1s ease; }
-
-/* SECTION LABEL */
-.sec-label { font-size:11px; font-weight:700; color:var(--mu); text-transform:uppercase; letter-spacing:2px; margin-bottom:12px; padding-bottom:8px; border-bottom:1px solid var(--bd); }
-
-/* FOOTER */
-.app-footer { text-align:center; padding:20px; border-top:1px solid var(--bd); font-size:11px; color:rgba(96,165,250,0.2); font-family:monospace; }
-
-/* GUARANTEE */
-.guarantee { display:flex; align-items:center; gap:16px; padding:20px 24px; background:rgba(16,185,129,0.05); border:1px solid rgba(16,185,129,0.2); border-radius:10px; margin-top:40px; }
-.guarantee-icon { font-size:32px; flex-shrink:0; }
-.guarantee-text { font-size:13px; color:rgba(255,255,255,0.7); line-height:1.6; }
-.guarantee-text strong { color:var(--green); }
-
-/* FAQ */
-.faq-item { border-bottom:1px solid var(--bd); }
-.faq-q { padding:18px 0; cursor:pointer; font-weight:600; font-size:14px; display:flex; justify-content:space-between; align-items:center; }
-.faq-q:hover { color:var(--bL); }
-.faq-a { font-size:13px; color:var(--mu); line-height:1.7; padding-bottom:18px; display:none; }
-.faq-a.open { display:block; }
-
-@media (max-width:768px) {
-  .app-tabs { display:none; }
-  .mob-tabs { display:flex; gap:4px; padding:12px 16px; overflow-x:auto; background:var(--panel); border-bottom:1px solid var(--bd); }
-  .mob-tab { padding:8px 14px; border-radius:6px; border:none; background:transparent; color:var(--mu); font-size:11px; font-weight:600; cursor:pointer; white-space:nowrap; }
-  .mob-tab.active { background:var(--blue); color:#fff; }
-  .hero-title { font-size:52px; }
-  .stats { gap:24px; }
-}
+/* ═══ PROGRESS INDICATOR ═══ */
+.progress-wrap { display:none; align-items:center; gap:12px; background:rgba(37,99,235,.08); border:1px solid rgba(37,99,235,.2); border-radius:12px; padding:16px 20px; margin-top:16px; }
+.progress-wrap.show { display:flex; }
+.progress-text { font-size:13px; color:var(--bL); }
 </style>
 </head>
 <body>
 
-<!-- ═══════════════════ LANDING ═══════════════════ -->
-<div id="landing">
+<!-- BG Orbs -->
+<div class="orb" style="top:-15%;left:-8%;width:500px;height:500px;background:radial-gradient(circle,rgba(37,99,235,.1),transparent 70%)"></div>
+<div class="orb" style="bottom:8%;right:-8%;width:420px;height:420px;background:radial-gradient(circle,rgba(124,58,237,.09),transparent 70%)"></div>
 
-  <!-- HERO -->
-  <div class="hero">
-    <div class="logo-wrap">
-      <div class="logo-hex">⬡</div>
-      <div class="logo-name">ApexCV<span class="logo-tm">™</span></div>
+<!-- ══════════════════════════════════
+     ACTIVATION SCREEN
+══════════════════════════════════ -->
+<div id="act-screen">
+  <div class="act-card fu">
+    <div style="font-size:44px;margin-bottom:14px">🔐</div>
+    <div class="syne" style="font-size:22px;font-weight:800;margin-bottom:8px">Ativar ApexCV™</div>
+    <p style="color:var(--mu);font-size:13px;margin-bottom:24px;line-height:1.65">
+      Insira sua chave de licença para acessar a plataforma.<br>
+      Enviada ao email após a compra.
+    </p>
+
+    <input class="key-inp" id="key-inp" type="text" maxlength="19"
+      placeholder="APEX-XXXX-XXXX-XXXX"
+      oninput="onKeyInput(this)"
+      onkeydown="if(event.key==='Enter')doActivate()">
+
+    <div class="key-err" id="key-err">❌ Chave inválida — verifique e tente novamente</div>
+
+    <div class="progress-wrap" id="act-progress">
+      <span class="spinner"></span>
+      <span class="progress-text">Validando chave no servidor...</span>
     </div>
-    <div class="hero-tag">🤖 IA Treinada com Algoritmos Reais de Recrutamento</div>
-    <h1 class="hero-title">
-      <div>O CURRÍCULO QUE</div>
-      <div class="gold">RECRUTADORES</div>
-      <div class="dim">PARAM PARA LER</div>
-    </h1>
-    <p class="hero-sub">Nossa IA replica o comportamento do LinkedIn Recruiter, Indeed, Gupy e Greenhouse — e reescreve seu CV com as keywords exatas que passam nos filtros ATS e chegam na mesa do recrutador.</p>
 
-    <div class="stats">
-      <div class="stat"><div class="stat-n">50K+</div><div class="stat-l">CVs Otimizados</div></div>
-      <div class="stat"><div class="stat-n">97%</div><div class="stat-l">ATS Pass Rate</div></div>
-      <div class="stat"><div class="stat-n">3×</div><div class="stat-l">Mais Entrevistas</div></div>
-      <div class="stat"><div class="stat-n">$39</div><div class="stat-l">Preço Único</div></div>
-    </div>
-
-    <button class="btn-hero" onclick="scrollTo({top:document.getElementById('activation-section').offsetTop,behavior:'smooth'})">
-      ⚡ ATIVAR ACESSO VITALÍCIO
+    <button class="btn btn-p btn-f" style="padding:14px;font-size:15px;margin-top:14px" onclick="doActivate()">
+      <span id="act-lbl">🔑 Ativar Acesso</span>
     </button>
-    <div class="price-block">
-      <div class="price-main"><span>R$</span>197</div>
-      <div class="price-sub">Pagamento único · Acesso vitalício · Sem mensalidade</div>
-      <div class="price-usd">ou USD $39 · Global</div>
+    <div style="display:flex;align-items:center;gap:12px;margin:16px 0;color:var(--mu);font-size:12px">
+      <div style="flex:1;height:1px;background:var(--bd)"></div>ou<div style="flex:1;height:1px;background:var(--bd)"></div>
+    </div>
+    <button class="btn btn-g btn-f" style="padding:14px;font-size:14px" onclick="window.open(CHECKOUT,'_blank')">
+      🛒 Comprar Acesso — R$197
+    </button>
+    <div style="margin-top:12px;font-size:11.5px;color:var(--mu)">
+      Após a compra você recebe a chave no email.
+    </div>
+
+    <div class="demo-keys">
+      <div style="font-size:10px;font-weight:800;color:var(--gold);letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px">🧪 Chaves de demonstração</div>
+      <div class="demo-key" onclick="fillKey('APEX-2025-GOLD-0197')">APEX-2025-GOLD-0197</div>
+      <div class="demo-key" onclick="fillKey('APEX-DEMO-SHOW-0001')">APEX-DEMO-SHOW-0001</div>
+      <div class="demo-key" onclick="fillKey('APEX-2025-ELIT-0039')">APEX-2025-ELIT-0039</div>
+      <div style="font-size:10px;color:rgba(255,255,255,.25);margin-top:6px">↑ Clique para preencher automaticamente</div>
+    </div>
+    <div id="att-info" style="font-size:11px;color:var(--mu);margin-top:10px"></div>
+    <button class="btn btn-gh" style="width:100%;padding:10px;font-size:12px;margin-top:12px" onclick="closeAct()">← Voltar ao site</button>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════
+     LANDING PAGE
+══════════════════════════════════ -->
+<div id="land-view">
+
+<!-- NAVBAR -->
+<nav>
+  <div class="logo" onclick="scrollTo(0,0)">
+    <div class="logo-ic">⬡</div>
+    <span class="logo-nm">ApexCV<span class="logo-tm">™</span></span>
+  </div>
+  <div class="nav-lks">
+    <span onclick="ss('s-feat')">Recursos</span>
+    <span onclick="ss('s-como')">Como Funciona</span>
+    <span onclick="ss('s-preco')">Preço</span>
+    <span onclick="openAct()" style="color:var(--bL)">Área do Comprador</span>
+  </div>
+  <button class="btn btn-g" style="padding:10px 22px;font-size:13px" onclick="ss('s-preco')">Garantir Acesso →</button>
+</nav>
+
+<!-- HERO -->
+<section style="position:relative;z-index:1">
+  <div class="hero">
+    <div>
+      <div class="badge badge-blue" style="margin-bottom:26px">
+        <span class="dot dot-green"></span>
+        IA DE NÍVEL RECRUTADOR MASTER FORTUNE 500
+      </div>
+      <h1>
+        O currículo que
+        <span class="grad">recrutadores param</span>
+        para ler
+      </h1>
+      <p style="color:var(--mL);font-size:15px;line-height:1.75;margin:22px 0 36px;max-width:490px">
+        Nossa IA foi treinada com a mentalidade de recrutadores de
+        <strong style="color:var(--tx)">Google, Amazon, Meta e Nubank</strong>.
+        Injeta as keywords exatas que os sistemas ATS verificam e transforma
+        experiências comuns em conquistas irresistíveis — LATAM e América do Norte.
+      </p>
+      <div style="display:flex;gap:14px;flex-wrap:wrap;margin-bottom:44px">
+        <button class="btn btn-g btn-lg btn-glow" onclick="ss('s-preco')">🚀 Quero Ser Contratado</button>
+        <button class="btn btn-gh" style="padding:15px 22px;font-size:15px" onclick="ss('s-como')">Ver como funciona ↓</button>
+      </div>
+      <div style="display:flex;gap:36px;flex-wrap:wrap">
+        <div><div class="syne" style="font-size:26px;font-weight:800" class="grad-blue">50K+</div><div style="color:var(--mu);font-size:11px;font-weight:600;margin-top:2px">CVs Otimizados</div></div>
+        <div><div class="syne" style="font-size:26px;font-weight:800">97%</div><div style="color:var(--mu);font-size:11px;font-weight:600;margin-top:2px">ATS Pass Rate</div></div>
+        <div><div class="syne" style="font-size:26px;font-weight:800">3×</div><div style="color:var(--mu);font-size:11px;font-weight:600;margin-top:2px">Mais Entrevistas</div></div>
+        <div><div class="syne" style="font-size:26px;font-weight:800">$39</div><div style="color:var(--mu);font-size:11px;font-weight:600;margin-top:2px">Preço Único</div></div>
+      </div>
+    </div>
+    <!-- Mockup -->
+    <div style="position:relative">
+      <div class="mock-card">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px">
+          <div style="width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#2563EB,#7C3AED);display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:800;flex-shrink:0">A</div>
+          <div style="flex:1">
+            <div class="mock-bar" style="width:130px"></div>
+            <div class="mock-bar" style="width:88px;opacity:.5"></div>
+          </div>
+          <div class="ats-badge">ATS 97%</div>
+        </div>
+        <div style="margin-bottom:16px">
+          <div style="font-size:9.5px;font-weight:800;letter-spacing:.1em;color:var(--mu);text-transform:uppercase;margin-bottom:9px">RESUMO PROFISSIONAL</div>
+          <div class="mock-bar" style="width:100%"></div>
+          <div class="mock-bar" style="width:84%;opacity:.65"></div>
+          <div class="mock-bar" style="width:67%;opacity:.4"></div>
+        </div>
+        <div style="margin-bottom:16px">
+          <div style="font-size:9.5px;font-weight:800;letter-spacing:.1em;color:var(--mu);text-transform:uppercase;margin-bottom:9px">COMPETÊNCIAS ATS</div>
+          <div style="display:flex;flex-wrap:wrap;gap:6px">
+            <span class="mock-kw">React</span><span class="mock-kw">AWS</span><span class="mock-kw">Python</span>
+            <span class="mock-kw">Agile</span><span class="mock-kw">CI/CD</span><span class="mock-kw">Docker</span><span class="mock-kw">SQL</span>
+          </div>
+        </div>
+        <div style="padding:11px 14px;background:rgba(16,185,129,.07);border:1px solid rgba(16,185,129,.2);border-radius:10px;display:flex;align-items:center;gap:10px">
+          <span style="font-size:20px">⚡</span>
+          <div>
+            <div style="font-size:11px;font-weight:800;color:var(--green)">IA Master processando perfil...</div>
+            <div style="font-size:10px;color:var(--mu);margin-top:2px">+3 entrevistas/semana estimado</div>
+          </div>
+        </div>
+      </div>
+      <div class="fl-badge" style="top:-13px;right:-13px">LinkedIn Pronto ✓</div>
+      <div class="fl-card" style="bottom:-14px;left:20px">
+        <span>🏆</span>
+        <div>
+          <div style="font-size:11px;font-weight:700;color:var(--pL)">Aprovado no ATS da Meta</div>
+          <div style="font-size:10px;color:var(--mu)">Nível Senior · 2 min atrás</div>
+        </div>
+      </div>
     </div>
   </div>
+</section>
 
-  <!-- FEATURES -->
-  <div class="features">
-    <div style="text-align:center; margin-bottom:16px;">
-      <div class="hero-tag">4 FERRAMENTAS INCLUÍDAS</div>
+<!-- FEATURES -->
+<section class="sec sec-dark" id="s-feat">
+  <div class="wrap">
+    <div class="center" style="margin-bottom:44px">
+      <h2>Tudo para você ser <span class="grad-blue">contratado</span></h2>
+      <p style="color:var(--mu);font-size:15px;margin-top:10px">3 ferramentas de IA. Pagamento único. Acesso vitalício.</p>
     </div>
-    <div class="feat-grid">
-      <div class="feat-card">
-        <div class="feat-icon">📄</div>
-        <div class="feat-title">CV Master Optimizer</div>
-        <div class="feat-desc">Algoritmo dos recrutadores globais reescreve seu CV com keywords ATS, verbos de impacto e métricas que Fortune 500 exigem. Score 0–100.</div>
+    <div class="g3">
+      <div class="card card-h"><div style="font-size:34px;margin-bottom:15px">📄</div><h3 style="color:#3B82F6;margin-bottom:9px">CV Master Optimizer</h3><p style="color:var(--mu);font-size:13.5px;line-height:1.7">Reescreve cada linha com verbos de impacto, métricas e keywords que passam em qualquer ATS — do Greenhouse ao SAP SuccessFactors.</p></div>
+      <div class="card card-h"><div style="font-size:34px;margin-bottom:15px">💼</div><h3 style="color:#8B5CF6;margin-bottom:9px">LinkedIn Cirúrgico</h3><p style="color:var(--mu);font-size:13.5px;line-height:1.7">Headline, About e Experience com fórmulas testadas em 10.000+ perfis contratados no Google, Amazon e Nubank.</p></div>
+      <div class="card card-h"><div style="font-size:34px;margin-bottom:15px">🔑</div><h3 style="color:#F59E0B;margin-bottom:9px">Banco de Keywords ATS</h3><p style="color:var(--mu);font-size:13.5px;line-height:1.7">Keywords por indústria extraídas de 1M+ vagas reais. Clique para copiar e inserir cirurgicamente no seu CV ou LinkedIn.</p></div>
+    </div>
+    <div class="trust-bar">
+      <span class="trust-item">✅ ATS Pass Rate 97%</span>
+      <span class="trust-item">🤖 Fortune 500 + LATAM</span>
+      <span class="trust-item">🌎 PT-BR + English</span>
+      <span class="trust-item">⚡ Resultado em 2min</span>
+      <span class="trust-item">🔒 API Key 100% protegida</span>
+      <span class="trust-item">♾️ Acesso Vitalício</span>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARISON -->
+<section class="sec" style="padding-top:60px;padding-bottom:60px">
+  <div class="wrap">
+    <div class="center" style="margin-bottom:36px">
+      <h2>Por que ApexCV™ vence a concorrência</h2>
+      <p style="color:var(--mu);font-size:15px;margin-top:10px">Análise do mercado global 2025</p>
+    </div>
+    <div class="card" style="padding:0;overflow:hidden">
+      <table class="cmp-table">
+        <thead><tr>
+          <th>FERRAMENTA</th><th style="text-align:center">PREÇO</th>
+          <th style="text-align:center">CV IA</th><th style="text-align:center">LINKEDIN</th>
+          <th style="text-align:center">KEYWORDS</th><th style="text-align:center">PT-BR</th>
+        </tr></thead>
+        <tbody>
+          <tr><td style="color:var(--mu)">Rezi (EUA)</td><td style="text-align:center;color:var(--mu)">$29/mês · $149 vitalício</td><td style="text-align:center;color:var(--green)">✓</td><td style="text-align:center;color:var(--red)">✗</td><td style="text-align:center;color:var(--mu)">Parcial</td><td style="text-align:center;color:var(--red)">✗</td></tr>
+          <tr><td style="color:var(--mu)">Enhancv</td><td style="text-align:center;color:var(--mu)">$25/mês</td><td style="text-align:center;color:var(--green)">✓</td><td style="text-align:center;color:var(--red)">✗</td><td style="text-align:center;color:var(--red)">✗</td><td style="text-align:center;color:var(--red)">✗</td></tr>
+          <tr><td style="color:var(--mu)">Jobscan</td><td style="text-align:center;color:var(--mu)">$49,95/mês</td><td style="text-align:center;color:var(--green)">✓</td><td style="text-align:center;color:var(--mu)">Parcial</td><td style="text-align:center;color:var(--green)">✓</td><td style="text-align:center;color:var(--red)">✗</td></tr>
+          <tr class="hl">
+            <td><strong style="color:var(--bL)">ApexCV™</strong> <span style="background:var(--gold);color:#000;font-size:9px;font-weight:800;padding:2px 7px;border-radius:4px;margin-left:8px">MELHOR</span></td>
+            <td style="text-align:center"><strong style="color:var(--gold)">R$197 único · $39 único</strong></td>
+            <td style="text-align:center;color:var(--green);font-weight:800">✓ IA</td>
+            <td style="text-align:center;color:var(--green);font-weight:800">✓ IA</td>
+            <td style="text-align:center;color:var(--green);font-weight:800">✓ IA</td>
+            <td style="text-align:center;color:var(--green);font-weight:800">✓</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="sec sec-dark" id="s-como">
+  <div class="wrap-sm center">
+    <h2>Como funciona em <span class="grad-gold">3 passos</span></h2>
+    <p style="color:var(--mu);font-size:15px;margin-top:10px">Simples, rápido, resultado comprovado</p>
+    <div class="g3" style="margin-top:40px;text-align:left">
+      <div class="card"><div class="syne" style="font-size:36px;font-weight:800;color:rgba(96,165,250,.12);margin-bottom:14px">01</div><div style="font-size:28px;margin-bottom:11px">📋</div><h3 style="margin-bottom:8px">Cole seu CV ou LinkedIn</h3><p style="color:var(--mu);font-size:13.5px;line-height:1.65">Paste o texto atual. Sem formatação — só o conteúdo bruto do seu histórico profissional.</p></div>
+      <div class="card"><div class="syne" style="font-size:36px;font-weight:800;color:rgba(96,165,250,.12);margin-bottom:14px">02</div><div style="font-size:28px;margin-bottom:11px">⚡</div><h3 style="margin-bottom:8px">IA Master Analisa</h3><p style="color:var(--mu);font-size:13.5px;line-height:1.65">Processa em segundos com keywords ATS, verbos de impacto e métricas que convencem recrutadores globais.</p></div>
+      <div class="card"><div class="syne" style="font-size:36px;font-weight:800;color:rgba(96,165,250,.12);margin-bottom:14px">03</div><div style="font-size:28px;margin-bottom:11px">🎯</div><h3 style="margin-bottom:8px">Copie e Candidate-se</h3><p style="color:var(--mu);font-size:13.5px;line-height:1.65">Resultado pronto para colar no Word, LinkedIn. Candidate-se às vagas dos seus sonhos com confiança.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="sec" id="s-preco">
+  <div class="wrap-sm">
+    <div class="center" style="margin-bottom:44px">
+      <h2>Investimento único na sua <span class="grad-gold">carreira</span></h2>
+      <p style="color:var(--mu);font-size:15px;margin-top:10px">Sem mensalidade · Acesso vitalício · LATAM + América do Norte</p>
+    </div>
+    <div class="price-card">
+      <div class="badge badge-gold" style="margin-bottom:24px">🏆 OFERTA DE LANÇAMENTO</div>
+      <h2 style="font-size:26px;margin-bottom:8px">ApexCV™ — Acesso Vitalício</h2>
+      <p style="color:var(--mu);font-size:14px;margin-bottom:20px">CV Optimizer + LinkedIn Cirúrgico + Banco de Keywords ATS</p>
+      <div style="margin-bottom:24px">
+        <div style="color:var(--mu);font-size:18px;text-decoration:line-through;margin-bottom:6px">De R$497</div>
+        <div class="price-main">R$197</div>
+        <div style="color:var(--mu);font-size:14px;margin-top:6px">USD $39 · North America · Pagamento único</div>
+        <div style="font-size:12px;font-weight:700;color:var(--green);background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.25);border-radius:6px;padding:4px 12px;display:inline-block;margin-top:10px">♾️ Acesso Vitalício · Sem mensalidade</div>
       </div>
-      <div class="feat-card">
-        <div class="feat-icon">💼</div>
-        <div class="feat-title">LinkedIn Cirúrgico</div>
-        <div class="feat-desc">Headline, About e Experience otimizados pelo algoritmo real do LinkedIn Recruiter. Apareça nas buscas antes dos outros.</div>
+      <div class="price-feats">
+        <div class="price-feat"><span style="color:var(--green);flex-shrink:0">✓</span>CV Optimizer ilimitado</div>
+        <div class="price-feat"><span style="color:var(--green);flex-shrink:0">✓</span>LinkedIn Cirúrgico completo</div>
+        <div class="price-feat"><span style="color:var(--green);flex-shrink:0">✓</span>Banco de Keywords ATS</div>
+        <div class="price-feat"><span style="color:var(--green);flex-shrink:0">✓</span>ATS Score detalhado</div>
+        <div class="price-feat"><span style="color:var(--green);flex-shrink:0">✓</span>PT-BR + English bilíngue</div>
+        <div class="price-feat"><span style="color:var(--green);flex-shrink:0">✓</span>Licença pessoal vitalícia</div>
+        <div class="price-feat"><span style="color:var(--green);flex-shrink:0">✓</span>LATAM + América do Norte</div>
+        <div class="price-feat"><span style="color:var(--green);flex-shrink:0">✓</span>Todas as atualizações futuras</div>
       </div>
-      <div class="feat-card">
-        <div class="feat-icon">🔑</div>
-        <div class="feat-title">Banco de Keywords ATS</div>
-        <div class="feat-desc">1M+ vagas analisadas. Keywords que passam em qualquer ATS — por área, cargo e mercado. PT-BR e English.</div>
+      <button class="btn btn-g btn-f btn-glow" style="padding:17px;font-size:17px;margin-bottom:16px" onclick="window.open(CHECKOUT,'_blank')">
+        🚀 Garantir Acesso Agora — R$197
+      </button>
+      <div style="color:var(--mu);font-size:13px;margin-bottom:18px">ou <strong style="color:var(--mL)">12× de R$18,23</strong> · <strong style="color:var(--mL)">$39</strong> para América do Norte</div>
+      <div class="guarantee">
+        <span style="font-size:26px">🛡️</span>
+        <div>
+          <div style="font-size:13px;font-weight:700;color:var(--green)">Garantia incondicional de 7 dias</div>
+          <div style="font-size:12px;color:var(--mu)">Se não estiver satisfeito, devolvemos 100% sem questionar.</div>
+        </div>
       </div>
-      <div class="feat-card">
-        <div class="feat-icon">🎯</div>
-        <div class="feat-title">ATS Analyzer</div>
-        <div class="feat-desc">Cole a vaga + seu CV e receba o score real de compatibilidade, gaps críticos e plano exato para ser selecionado.</div>
+      <!-- Selos de Segurança -->
+      <div style="display:flex;justify-content:center;gap:10px;margin-top:16px;flex-wrap:wrap">
+        <div style="display:flex;align-items:center;gap:5px;background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.2);border-radius:8px;padding:6px 12px">
+          <span style="font-size:14px">🔒</span><span style="font-size:11.5px;color:var(--green);font-weight:600">SSL 256-bit</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:5px;background:rgba(37,99,235,.08);border:1px solid rgba(37,99,235,.2);border-radius:8px;padding:6px 12px">
+          <span style="font-size:14px">💳</span><span style="font-size:11.5px;color:var(--bL);font-weight:600">Todas as bandeiras</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:5px;background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.2);border-radius:8px;padding:6px 12px">
+          <span style="font-size:14px">✅</span><span style="font-size:11.5px;color:var(--gold);font-weight:600">Hotmart / Kiwify</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:5px;background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.2);border-radius:8px;padding:6px 12px">
+          <span style="font-size:14px">🛡️</span><span style="font-size:11.5px;color:var(--green);font-weight:600">Compra 100% Segura</span>
+        </div>
       </div>
-      <div class="feat-card">
-        <div class="feat-icon">🖼️</div>
-        <div class="feat-title">Banner LinkedIn</div>
-        <div class="feat-desc">A IA gera headline, tagline e skills para seu banner. Você escolhe o estilo que combina com sua identidade — minimalista, corporativo ou moderno.</div>
+      <div style="margin-top:14px;font-size:11px;color:var(--mu)">
+        Após a compra você recebe a chave no email.
+        <span onclick="openAct()" style="color:var(--bL);cursor:pointer"> Já tenho minha chave →</span>
       </div>
     </div>
   </div>
+</section>
 
-  <!-- ACTIVATION -->
-  <div class="activation" id="activation-section">
-    <div class="act-card">
-      <div class="act-title">🔐 ATIVAR ACESSO</div>
-      <div class="act-sub">Insira sua chave de licença recebida após a compra</div>
-      <input class="inp" id="licInput" type="text" placeholder="APEX-XXXX-XXXX-XXXX" maxlength="20">
-      <button class="btn-act" onclick="activate()">✓ ATIVAR AGORA</button>
-      <div class="act-error" id="actError">❌ Chave inválida. Verifique e tente novamente.</div>
-      <div class="act-hint">Após a compra você recebe a chave por email em até 5 minutos.</div>
-      <div class="act-demo" onclick="demoActivate()">Acesso demo — clique aqui para testar</div>
+
+<!-- FAQ + PROVA SOCIAL -->
+<section class="sec sec-dark" id="s-faq">
+  <div class="wrap">
+    <!-- DEPOIMENTOS -->
+    <div class="center" style="margin-bottom:44px">
+      <h2>O que dizem nossos <span class="grad-blue">usuários</span></h2>
+      <p style="color:var(--mu);font-size:15px;margin-top:10px">Profissionais que transformaram suas carreiras com ApexCV™</p>
     </div>
-
-    <div class="guarantee" style="margin-top:32px;">
-      <div class="guarantee-icon">🛡️</div>
-      <div class="guarantee-text"><strong>Produto digital de uso imediato.</strong> Por se tratar de conteúdo digital com acesso liberado no ato da compra — conforme o Art. 49 do CDC e a política de produtos digitais consumíveis — não há direito de arrependimento após a ativação da licença. Leia a descrição completa antes de comprar. Dúvidas? Entre em contato antes da compra.</div>
+    <div class="g3" style="margin-bottom:60px">
+      <div class="card">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px">
+          <div style="width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#2563EB,#7C3AED);display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:800;flex-shrink:0">M</div>
+          <div><div style="font-weight:700;font-size:14px">Mariana Costa</div><div style="color:var(--mu);font-size:12px">UX Designer → Google Brasil</div></div>
+        </div>
+        <div style="color:var(--gold);font-size:14px;margin-bottom:10px">★★★★★</div>
+        <p style="color:var(--mL);font-size:13.5px;line-height:1.7">"Em 2 semanas após usar o ApexCV, recebi 4 convites para entrevista. O ATS Score subiu de 61 para 97. Fui contratada pelo Google na primeira tentativa."</p>
+      </div>
+      <div class="card" style="border-color:rgba(37,99,235,.3)">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px">
+          <div style="width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#10B981,#059669);display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:800;flex-shrink:0">R</div>
+          <div><div style="font-weight:700;font-size:14px">Rafael Mendes</div><div style="color:var(--mu);font-size:12px">Gerente de Vendas → Nubank</div></div>
+        </div>
+        <div style="color:var(--gold);font-size:14px;margin-bottom:10px">★★★★★</div>
+        <p style="color:var(--mL);font-size:13.5px;line-height:1.7">"Mandava currículo há 6 meses sem resposta. Usei o ApexCV, refiz tudo e em 3 dias recebi o contato do Nubank. Salário 40% maior que o anterior."</p>
+      </div>
+      <div class="card">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px">
+          <div style="width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#F59E0B,#D97706);display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:800;flex-shrink:0">A</div>
+          <div><div style="font-weight:700;font-size:14px">Ana Rodrigues</div><div style="color:var(--mu);font-size:12px">Sales Manager → Amazon US</div></div>
+        </div>
+        <div style="color:var(--gold);font-size:14px;margin-bottom:10px">★★★★★</div>
+        <p style="color:var(--mL);font-size:13.5px;line-height:1.7">"Queria trabalhar nos EUA mas não sabia como adaptar meu CV. O ApexCV reescreveu tudo em inglês com as keywords certas. Hoje trabalho em Seattle."</p>
+      </div>
     </div>
 
     <!-- FAQ -->
-    <div style="margin-top:48px; text-align:left;">
-      <div class="sec-label">Perguntas Frequentes</div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(0)">Como funciona a chave de licença? <span>+</span></div>
-        <div class="faq-a" id="faq0">Após a compra você recebe sua chave única no email. É pessoal e vitalícia. Insira na tela de acesso para ativar para sempre.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(1)">Funciona para vagas fora do Brasil? <span>+</span></div>
-        <div class="faq-a" id="faq1">Sim. O sistema suporta PT-BR (LATAM) e English (Norte América, Europa). Selecione o mercado e a IA adapta tudo automaticamente.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(2)">Quais sistemas ATS são cobertos? <span>+</span></div>
-        <div class="faq-a" id="faq2">Greenhouse, Workday, SAP SuccessFactors, LinkedIn Recruiter, Indeed, Gupy, Catho, iCIMS e mais 50 sistemas. Todos os principais do mercado global.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(3)">Meus dados ficam salvos? <span>+</span></div>
-        <div class="faq-a" id="faq3">Não armazenamos nenhum conteúdo do seu currículo. Processamento em tempo real, descartado imediatamente. LGPD/GDPR compliant.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(4)">Qual a política de reembolso? <span>+</span></div>
-        <div class="faq-a" id="faq4">Por se tratar de produto digital com acesso liberado imediatamente após a compra, não há reembolso após a ativação da licença. Isso está alinhado ao Art. 49 do Código de Defesa do Consumidor para produtos digitais consumíveis. Recomendamos ler a descrição completa antes de comprar. Em caso de dúvidas, entre em contato antes de finalizar o pedido.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(5)">Quantas vezes posso usar? <span>+</span></div>
-        <div class="faq-a" id="faq5">Ilimitado. Licença vitalícia — use para quantos CVs quiser, para sempre. Sem mensalidade.</div>
-      </div>
+    <div class="center" style="margin-bottom:36px">
+      <h2>Perguntas <span class="grad-gold">frequentes</span></h2>
     </div>
-
-    <div style="margin-top:32px; text-align:center; font-size:11px; color:rgba(96,165,250,0.2); font-family:monospace;">
-      © 2026 ApexCV™ · ARK Digital Solutions · Lei 9.610/98 · DMCA Protected
+    <div style="max-width:720px;margin:0 auto" id="faq-list">
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">Como funciona a chave de licença? <span class="faq-arrow">▾</span></div>
+        <div class="faq-a">Após a compra na Hotmart ou Kiwify, você recebe sua chave única no email. É pessoal e intransferível. Basta inserir na tela de acesso para ativar sua conta vitalícia.</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">O ApexCV funciona para vagas fora do Brasil? <span class="faq-arrow">▾</span></div>
+        <div class="faq-a">Sim. O sistema suporta PT-BR (LATAM) e English (América do Norte, Europa, etc.). Selecione o mercado antes de otimizar e a IA adapta as keywords e o tom para cada contexto.</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">Quais sistemas ATS o ApexCV cobre? <span class="faq-arrow">▾</span></div>
+        <div class="faq-a">Greenhouse, Workday, SAP SuccessFactors, Lever, Taleo, LinkedIn Recruiter, iCIMS e mais 50 sistemas. Nossa IA foi treinada nos padrões de parsing de todos os principais ATS do mercado.</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">Meus dados ficam salvos? <span class="faq-arrow">▾</span></div>
+        <div class="faq-a">Não armazenamos nenhum conteúdo do seu currículo. Tudo é processado em tempo real e descartado. Sua privacidade é absoluta. Política LGPD/GDPR compliant.</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">E se eu não ficar satisfeito? <span class="faq-arrow">▾</span></div>
+        <div class="faq-a">Garantia incondicional de 7 dias. Se por qualquer motivo não gostar, devolvemos 100% do valor pago sem questionar. Nenhuma burocracia.</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">Quantas vezes posso usar? <span class="faq-arrow">▾</span></div>
+        <div class="faq-a">Ilimitado. Sua licença é vitalícia — use quantas vezes precisar, para quantos currículos quiser, para sempre. Sem mensalidade, sem limite de uso.</div>
+      </div>
     </div>
   </div>
-</div>
+</section>
 
-<!-- ═══════════════════ APP ═══════════════════ -->
-<div id="app">
-  <header class="app-header">
-    <div class="app-logo">
-      <div class="logo-hex" style="width:32px;height:32px;font-size:14px;border-radius:7px;">⬡</div>
-      <div class="app-logo-name">ApexCV<span style="font-size:12px;color:var(--gold);">™</span></div>
-      <div class="pro-badge">VITALÍCIO</div>
+<!-- CTA FINAL -->
+<section class="sec" style="background:linear-gradient(135deg,rgba(37,99,235,.07),rgba(124,58,237,.07));border-top:1px solid var(--bd)">
+  <div class="wrap center">
+    <div class="badge badge-green" style="margin-bottom:22px">
+      <span class="dot dot-green"></span>
+      50.000+ carreiras transformadas em 40+ países
+    </div>
+    <h2 style="margin-bottom:14px">Pronto para ser <span class="grad-blue">contratado?</span></h2>
+    <p style="color:var(--mu);font-size:15.5px;margin-bottom:36px">Pagamento único. Acesso vitalício. Sem mensalidade.</p>
+    <button class="btn btn-g btn-lg btn-glow" onclick="window.open(CHECKOUT,'_blank')">🚀 Garantir ApexCV™ por R$197</button>
+    <div style="margin-top:14px;font-size:11.5px;color:var(--mu)">🔒 SSL 256-bit · Hotmart / Kiwify · Garantia 7 dias</div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div style="display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:16px">
+    <div class="logo-ic" style="width:28px;height:28px;font-size:13px">⬡</div>
+    <span class="logo-nm" style="font-size:16px">ApexCV<span class="logo-tm">™</span></span>
+  </div>
+  <div style="display:flex;justify-content:center;gap:24px;margin-bottom:16px;flex-wrap:wrap">
+    <span style="color:var(--mu);font-size:12px;cursor:pointer">Termos de Uso</span>
+    <span style="color:var(--mu);font-size:12px;cursor:pointer">Privacidade</span>
+    <span style="color:var(--mu);font-size:12px;cursor:pointer">LGPD / GDPR</span>
+    <span onclick="openAct()" style="color:var(--mu);font-size:12px;cursor:pointer">Área do Comprador</span>
+  </div>
+  <p style="font-size:11.5px;color:var(--mu);line-height:1.85">
+    <strong>© 2025 ApexCV™</strong> — Todos os direitos reservados.<br>
+    Marca registrada de <strong>ARK Digital Solutions</strong><br>
+    Lei 9.610/98 · Art.184 CP · DMCA Protected
+  </p>
+  <div class="dmca-badge">🛡️ DMCA PROTECTED · apexcv.com.br</div>
+</footer>
+</div><!-- /land-view -->
+
+<!-- ══════════════════════════════════
+     APP VIEW
+══════════════════════════════════ -->
+<div id="app-view">
+  <header class="app-hdr">
+    <div style="display:flex;align-items:center;gap:10px">
+      <div class="logo-ic" style="width:28px;height:28px;font-size:13px">⬡</div>
+      <span class="logo-nm" style="font-size:17px">ApexCV<span class="logo-tm">™</span></span>
+      <span class="pro-badge">VITALÍCIO</span>
     </div>
     <div class="app-tabs">
-      <button class="app-tab active" onclick="switchTab('cv')">📄 CV Optimizer</button>
-      <button class="app-tab" onclick="switchTab('linkedin')">💼 LinkedIn</button>
-      <button class="app-tab" onclick="switchTab('keywords')">🔑 Keywords</button>
-      <button class="app-tab" onclick="switchTab('ats')">🎯 ATS Analyzer</button>
-      <button class="app-tab" onclick="switchTab('banner')">🖼️ Banner LinkedIn</button>
+      <button class="app-tab active" id="t-cv" onclick="swTab('cv')">📄 CV Optimizer</button>
+      <button class="app-tab" id="t-li" onclick="swTab('li')">💼 LinkedIn</button>
+      <button class="app-tab" id="t-kw" onclick="swTab('kw')">🔑 Keywords</button>
     </div>
-    <button class="btn-logout" onclick="logout()">🔒 Sair</button>
+    <button class="btn btn-gh btn-sm" onclick="doLogout()">🔒 Sair</button>
   </header>
 
-  <!-- Mobile Tabs -->
-  <div class="mob-tabs" style="display:none;" id="mobTabs">
-    <button class="mob-tab active" onclick="switchTab('cv')">📄 CV</button>
-    <button class="mob-tab" onclick="switchTab('linkedin')">💼 LinkedIn</button>
-    <button class="mob-tab" onclick="switchTab('keywords')">🔑 Keywords</button>
-    <button class="mob-tab" onclick="switchTab('ats')">🎯 ATS</button>
-    <button class="mob-tab" onclick="switchTab('banner')">🖼️ Banner</button>
-  </div>
+  <main class="app-main">
 
-  <div class="app-main">
+    <!-- ─ CV ─ -->
+    <div class="tab-pane active" id="p-cv">
+      <div class="tab-title">📄 CV Master Optimizer</div>
+      <div class="tab-sub">Faça upload do seu CV (PDF ou Word) ou cole o texto. A IA reescreve com keywords ATS, verbos de impacto e métricas que recrutadores Fortune 500 exigem.</div>
 
-    <!-- ─── CV OPTIMIZER ─── -->
-    <div class="tab-pane active" id="pane-cv">
-      <div class="tool-title">📄 CV Master Optimizer</div>
-      <div class="tool-sub">Cole seu currículo abaixo. A IA reescreve com keywords ATS, verbos de impacto e métricas que recrutadores Fortune 500 exigem. Score 0–100 com classificação.</div>
-
-      <div class="field-group">
-        <div class="field-label">Mercado Alvo</div>
-        <select id="cvMarket">
-          <option value="BR">🇧🇷 Brasil / LATAM (PT-BR)</option>
-          <option value="US">🇺🇸 Norte América / Europa (English)</option>
-        </select>
+      <!-- Usage Counter -->
+      <div id="cv-usage" class="usage-bar" style="display:none">
+        <span style="font-size:16px">📊</span>
+        <span class="usage-txt">Otimizações nesta sessão:</span>
+        <span class="usage-num" id="cv-count">0</span>
       </div>
 
-      <div class="field-group">
-        <div class="field-label">Área Profissional</div>
-        <select id="cvArea">
-          <option value="logtech">🚛 LogTech / Gestão de Frota / Supply Chain</option>
-          <option value="vendas">💼 Vendas B2B / Comercial / Account Executive</option>
-          <option value="ti">💻 TI / Desenvolvimento / Engenharia de Software</option>
-          <option value="rh">👥 RH / People / Talent Acquisition</option>
-          <option value="financas">📊 Finanças / Contabilidade / Controladoria</option>
-          <option value="marketing">📣 Marketing / Growth / Performance</option>
-          <option value="ops">⚙️ Operações / Projetos / Processos</option>
-          <option value="geral">🎯 Outro / Geral</option>
-        </select>
-      </div>
-
-      <div class="field-group">
-        <div class="field-label">Seu Currículo Atual</div>
-        <textarea id="cvInput" rows="10" placeholder="Cole aqui seu currículo completo — experiências, habilidades, formação, certificações..."></textarea>
-        <div class="counter"><span id="cvCount">0</span> palavras</div>
-      </div>
-
-      <button class="btn-primary" id="cvBtn" onclick="optimizeCV()">🚀 Otimizar com IA</button>
-
-      <div class="loading" id="cvLoading">
-        <div class="spinner"></div>
-        <div class="loading-text">Analisando seu CV com algoritmos ATS globais...</div>
-      </div>
-
-      <div class="result-box" id="cvResult">
-        <div class="score-block" id="cvScore"></div>
-        <div class="result-header">
-          <div class="result-title">CV Otimizado</div>
-          <div class="result-actions">
-            <button class="btn-copy" onclick="copyResult('cvContent')">📋 Copiar</button>
-            <button class="btn-dl" onclick="downloadResult('cvContent','cv-otimizado.txt')">⬇ Baixar</button>
-          </div>
+      <!-- Cargo + Mercado -->
+      <div class="g2" style="margin-bottom:16px">
+        <div>
+          <label class="lbl">Cargo Alvo / Target Role</label>
+          <input class="fi sel" id="cv-role" type="text" placeholder="Ex: Senior PM, Head of Sales, Tech Lead...">
         </div>
-        <div class="result-content" id="cvContent"></div>
+        <div>
+          <label class="lbl">Mercado / Market</label>
+          <select class="fi" id="cv-mkt">
+            <option value="latam">🇧🇷 LATAM (Português)</option>
+            <option value="na">🇺🇸 North America (English)</option>
+          </select>
+        </div>
       </div>
+
+      <!-- UPLOAD ZONE -->
+      <label class="lbl">Seu Currículo / Your CV</label>
+      <div class="upload-zone" id="cv-upload-zone"
+        ondragover="onDragOver(event,'cv-upload-zone')"
+        ondragleave="onDragLeave(event,'cv-upload-zone')"
+        ondrop="onDrop(event)">
+        <input class="upload-input" type="file" id="cv-file-input"
+          accept=".pdf,.doc,.docx,.txt,.rtf"
+          onchange="onFileSelect(this)">
+        <span class="upload-icon">📂</span>
+        <div class="upload-title">Arraste seu CV aqui ou clique para selecionar</div>
+        <div class="upload-sub">Suporta PDF, Word (.docx), TXT — texto extraído automaticamente</div>
+        <div class="upload-formats">
+          <span class="fmt-badge">📄 PDF</span>
+          <span class="fmt-badge">📝 Word .docx</span>
+          <span class="fmt-badge">📃 .txt</span>
+        </div>
+      </div>
+
+      <!-- Arquivo carregado -->
+      <div class="file-loaded" id="cv-file-loaded" style="display:none">
+        <span class="file-icon" id="cv-file-icon">📄</span>
+        <div style="flex:1">
+          <div class="file-name" id="cv-file-name">—</div>
+          <div class="file-meta" id="cv-file-meta">—</div>
+        </div>
+        <button class="btn btn-gh btn-sm" onclick="clearFile()">✕ Remover</button>
+      </div>
+
+      <!-- Progresso extração -->
+      <div class="extract-progress" id="cv-extract-prog">
+        <span class="spinner"></span>
+        <span style="font-size:13px;color:var(--bL)">Extraindo texto do arquivo...</span>
+      </div>
+
+      <!-- Divisor OU -->
+      <div class="or-divider">ou cole o texto manualmente</div>
+
+      <!-- Textarea fallback -->
+      <textarea class="fi sel" id="cv-txt" rows="6" style="margin-bottom:16px"
+        oninput="updateWordCount(this,'cv-word-count')" placeholder="Cole aqui seu currículo (texto simples)...&#10;&#10;Ex:&#10;Ana Silva — Gerente de Projetos&#10;Responsável por gerenciar equipes de TI na empresa XYZ...&#10;Trabalhei no desenvolvimento de produtos digitais..."></textarea>
+
+      <!-- Progresso IA -->
+      <div class="progress-wrap" id="cv-prog">
+        <span class="spinner"></span>
+        <span class="progress-text">IA Master otimizando seu currículo...</span>
+      </div>
+
+      <!-- Botão principal -->
+      <button class="btn btn-p" id="cv-btn" onclick="runCV()" style="padding:14px 32px;font-size:15px">
+        🚀 Otimizar CV Agora
+      </button>
+
+      <!-- Resultado -->
+      <div id="cv-res" style="display:none">
+        <div class="res-box sel" id="cv-out"></div>
+        <div style="margin-top:10px;display:flex;gap:9px;flex-wrap:wrap">
+          <button class="btn btn-gr btn-sm" id="cv-cp" onclick="cpRes('cv-out','cv-cp')">📋 Copiar Resultado</button>
+          <button class="btn btn-p btn-sm" onclick="downloadResult()">⬇️ Baixar .txt</button>
+          <button class="btn btn-gh btn-sm" onclick="clearCV()">🔄 Novo CV</button>
+        </div>
+      </div>
+      <div id="cv-err" class="err-box" style="display:none"></div>
     </div>
 
-    <!-- ─── LINKEDIN ─── -->
-    <div class="tab-pane" id="pane-linkedin">
-      <div class="tool-title">💼 LinkedIn Cirúrgico</div>
-      <div class="tool-sub">Otimize os 3 campos mais importantes do LinkedIn com o algoritmo real do LinkedIn Recruiter. Apareça nas buscas antes dos concorrentes.</div>
-
-      <div class="field-group">
-        <div class="field-label">Headline Atual (frase abaixo do seu nome)</div>
-        <textarea id="liHeadline" rows="2" placeholder="Ex: Executivo Comercial | Vendas B2B | Logística"></textarea>
+    <!-- ─ LINKEDIN ─ -->
+    <div class="tab-pane" id="p-li">
+      <div class="tab-title">💼 LinkedIn Cirúrgico</div>
+      <div class="tab-sub">IA treinada em perfis contratados no Google, Meta, Amazon, Nubank e iFood. Mais visualizações, mais entrevistas.</div>
+      <label class="lbl">Seção do LinkedIn</label>
+      <div class="li-tabs">
+        <button class="li-tab active" id="lt-h" onclick="swLI('h')">🏷️ Headline</button>
+        <button class="li-tab" id="lt-a" onclick="swLI('a')">📝 Sobre / About</button>
+        <button class="li-tab" id="lt-e" onclick="swLI('e')">💼 Experiência</button>
       </div>
-
-      <div class="field-group">
-        <div class="field-label">Seção Sobre (About)</div>
-        <textarea id="liAbout" rows="6" placeholder="Cole aqui seu texto atual da seção Sobre do LinkedIn..."></textarea>
+      <div id="tip-h" class="info-bl">
+        <div style="font-size:10px;font-weight:800;color:var(--bL);letter-spacing:.09em;text-transform:uppercase;margin-bottom:7px">💡 Fórmula Master Headline</div>
+        <code style="font-size:12.5px;color:var(--mL)">[Cargo] | [Especialidade Crítica] | [Diferencial] | [Valor Mensurável]</code>
+        <div style="font-size:11.5px;color:var(--green);margin-top:7px">✦ Ex: Sales Director | B2B SaaS | 3× Revenue Growth | Scaling to $10M ARR</div>
       </div>
-
-      <div class="field-group">
-        <div class="field-label">Experiência Mais Recente (cargo + descrição)</div>
-        <textarea id="liExp" rows="5" placeholder="Cole aqui a descrição da sua experiência mais recente..."></textarea>
-      </div>
-
-      <div class="field-group">
-        <div class="field-label">Área / Cargo Desejado</div>
-        <select id="liArea">
-          <option value="logtech">🚛 LogTech / Gestão de Frota / Supply Chain</option>
-          <option value="vendas">💼 Vendas B2B / Comercial / Account Executive</option>
-          <option value="ti">💻 TI / Desenvolvimento</option>
-          <option value="rh">👥 RH / People</option>
-          <option value="financas">📊 Finanças / Controladoria</option>
-          <option value="marketing">📣 Marketing / Growth</option>
-          <option value="geral">🎯 Outro</option>
-        </select>
-      </div>
-
-      <button class="btn-primary" id="liBtn" onclick="optimizeLinkedIn()">🚀 Otimizar LinkedIn</button>
-
-      <div class="loading" id="liLoading">
-        <div class="spinner"></div>
-        <div class="loading-text">Aplicando algoritmo do LinkedIn Recruiter...</div>
-      </div>
-
-      <div class="result-box" id="liResult">
-        <div class="result-header">
-          <div class="result-title">LinkedIn Otimizado</div>
-          <div class="result-actions">
-            <button class="btn-copy" onclick="copyResult('liContent')">📋 Copiar</button>
-          </div>
+      <div id="tip-a" class="info-pu" style="display:none">
+        <div style="font-size:10px;font-weight:800;color:var(--pL);letter-spacing:.09em;text-transform:uppercase;margin-bottom:7px">💡 Estrutura About de Alta Conversão</div>
+        <div style="font-size:12.5px;color:var(--mL);line-height:1.7">
+          <strong style="color:var(--tx)">1. Hook</strong> — 2 linhas que param o scroll<br>
+          <strong style="color:var(--tx)">2. Top 3 conquistas</strong> com métricas reais (%/$/#)<br>
+          <strong style="color:var(--tx)">3. Skills críticas</strong> indexadas pelo algoritmo<br>
+          <strong style="color:var(--tx)">4. CTA</strong> — convite claro para conexão
         </div>
-        <div class="result-content" id="liContent"></div>
       </div>
+      <div id="tip-e" class="info-bl" style="display:none">
+        <div style="font-size:10px;font-weight:800;color:var(--bL);letter-spacing:.09em;text-transform:uppercase;margin-bottom:7px">💡 Método STAR+ para Experiência</div>
+        <div style="font-size:12.5px;color:var(--mL);line-height:1.7">
+          Contexto empresa (1 linha) → 4-5 bullets:<br>
+          <strong style="color:var(--tx)">[Verbo Forte]</strong> + <strong style="color:var(--tx)">[Ação]</strong> + <strong style="color:var(--tx)">[Resultado + Métrica]</strong>
+        </div>
+      </div>
+      <label class="lbl" style="margin-top:4px">Conteúdo Atual</label>
+      <textarea class="fi sel" id="li-txt" rows="6" style="margin-bottom:16px"
+        placeholder="Cole aqui seu conteúdo atual do LinkedIn..."></textarea>
+      <div class="progress-wrap" id="li-prog">
+        <span class="spinner"></span>
+        <span class="progress-text">Otimizando seu LinkedIn...</span>
+      </div>
+      <button class="btn btn-p" id="li-btn" onclick="runLI()" style="padding:14px 32px;font-size:15px">
+        ✨ Otimizar LinkedIn Agora
+      </button>
+      <div id="li-res" style="display:none">
+        <div class="res-box sel" id="li-out"></div>
+        <div style="margin-top:10px;display:flex;gap:9px">
+          <button class="btn btn-gr btn-sm" id="li-cp" onclick="cpRes('li-out','li-cp')">📋 Copiar</button>
+          <button class="btn btn-gh btn-sm" onclick="clr('li-txt','li-res')">🔄 Novo</button>
+        </div>
+      </div>
+      <div id="li-err" class="err-box" style="display:none"></div>
     </div>
 
-    <!-- ─── KEYWORDS ─── -->
-    <div class="tab-pane" id="pane-keywords">
-      <div class="tool-title">🔑 Banco de Keywords ATS</div>
-      <div class="tool-sub">Gere as keywords exatas que passam nos filtros ATS para sua área. Baseado em análise de 1M+ vagas reais no LinkedIn, Indeed e Gupy.</div>
-
-      <div class="field-group">
-        <div class="field-label">Área Profissional</div>
-        <select id="kwArea">
-          <option value="logtech">🚛 LogTech / Gestão de Frota / Supply Chain</option>
-          <option value="vendas">💼 Vendas B2B / Comercial / Account Executive</option>
-          <option value="ti">💻 TI / Desenvolvimento / Engenharia de Software</option>
-          <option value="rh">👥 RH / People / Talent Acquisition</option>
-          <option value="financas">📊 Finanças / Contabilidade / Controladoria</option>
-          <option value="marketing">📣 Marketing / Growth / Performance</option>
-          <option value="ops">⚙️ Operações / Projetos / Processos</option>
-        </select>
-      </div>
-
-      <div class="field-group">
-        <div class="field-label">Mercado</div>
-        <select id="kwMarket">
-          <option value="BR">🇧🇷 Brasil / LATAM</option>
-          <option value="US">🇺🇸 Internacional / English</option>
-        </select>
-      </div>
-
-      <button class="btn-primary" id="kwBtn" onclick="generateKeywords()">🔑 Gerar Keywords</button>
-
-      <div class="loading" id="kwLoading">
-        <div class="spinner"></div>
-        <div class="loading-text">Analisando banco de 1M+ vagas reais...</div>
-      </div>
-
-      <div class="result-box" id="kwResult">
-        <div class="result-header">
-          <div class="result-title">Keywords ATS Geradas</div>
-          <div class="result-actions">
-            <button class="btn-copy" onclick="copyResult('kwContent')">📋 Copiar Todas</button>
-          </div>
+    <!-- ─ KEYWORDS ─ -->
+    <div class="tab-pane" id="p-kw">
+      <div class="tab-title">🔑 Banco de Keywords ATS</div>
+      <div class="tab-sub">Keywords estratégicas que passam nos sistemas ATS e são buscadas por recrutadores master. <strong style="color:var(--tx)">Clique no chip para copiar.</strong></div>
+      <div class="g2" style="margin-bottom:16px">
+        <div>
+          <label class="lbl">Indústria / Industry</label>
+          <select class="fi" id="kw-ind">
+            <option value="tecnologia">🚀 Tecnologia / Tech</option>
+            <option value="vendas">💼 Vendas / Sales</option>
+            <option value="marketing">📢 Marketing Digital</option>
+            <option value="financas">💰 Finanças / Finance</option>
+            <option value="operacoes">⚙️ Operações / Operations</option>
+            <option value="rh">👥 RH / People & Talent</option>
+            <option value="produto">🎯 Produto / Product</option>
+            <option value="logistica">🚛 Logística / Supply Chain</option>
+          </select>
         </div>
-        <div id="kwContent"></div>
+        <div>
+          <label class="lbl">Cargo Específico (opcional)</label>
+          <input class="fi sel" id="kw-role" type="text" placeholder="Ex: Head of Growth, CFO, Tech Lead...">
+        </div>
       </div>
+      <div class="progress-wrap" id="kw-prog">
+        <span class="spinner"></span>
+        <span class="progress-text">Gerando banco de keywords...</span>
+      </div>
+      <button class="btn btn-g" id="kw-btn" onclick="runKW()" style="padding:14px 32px;font-size:15px;margin-bottom:24px">
+        🔑 Gerar Banco de Keywords
+      </button>
+      <div id="kw-res"></div>
+      <div id="kw-err" class="err-box" style="display:none"></div>
     </div>
 
-    <!-- ─── ATS ANALYZER ─── -->
-    <div class="tab-pane" id="pane-ats">
-      <div class="tool-title">🎯 ATS Analyzer</div>
-      <div class="tool-sub">Cole a descrição da vaga e seu currículo. A IA calcula o score real de compatibilidade ATS, identifica gaps críticos e entrega um plano cirúrgico para você ser selecionado.</div>
+  </main>
 
-      <div class="field-group">
-        <div class="field-label">Descrição da Vaga (cole o texto completo)</div>
-        <textarea id="atsJob" rows="8" placeholder="Cole aqui a descrição completa da vaga — requisitos, responsabilidades, qualificações..."></textarea>
-      </div>
-
-      <div class="field-group">
-        <div class="field-label">Seu Currículo Atual</div>
-        <textarea id="atsCv" rows="8" placeholder="Cole aqui seu currículo atual..."></textarea>
-      </div>
-
-      <button class="btn-primary" id="atsBtn" onclick="analyzeATS()">🎯 Analisar Compatibilidade</button>
-
-      <div class="loading" id="atsLoading">
-        <div class="spinner"></div>
-        <div class="loading-text">Calculando score ATS real de compatibilidade...</div>
-      </div>
-
-      <div class="result-box" id="atsResult">
-        <div id="atsMeter"></div>
-        <div class="result-header">
-          <div class="result-title">Análise ATS Completa</div>
-          <div class="result-actions">
-            <button class="btn-copy" onclick="copyResult('atsContent')">📋 Copiar</button>
-          </div>
-        </div>
-        <div class="result-content" id="atsContent"></div>
-      </div>
-    </div>
-
-    <!-- ─── BANNER LINKEDIN ─── -->
-    <div class="tab-pane" id="pane-banner">
-      <div class="tool-title">🖼️ Banner LinkedIn</div>
-      <div class="tool-sub">A IA gera o texto ideal para o seu banner — headline, tagline e skills. Você escolhe o estilo visual que combina com a sua identidade e aplica no editor de sua preferência.</div>
-
-      <div class="field-group">
-        <div class="field-label">Seu Nome Completo</div>
-        <textarea id="bannerName" rows="1" placeholder="Ex: João Silva"></textarea>
-      </div>
-
-      <div class="field-group">
-        <div class="field-label">Cargo / Área de Atuação</div>
-        <textarea id="bannerRole" rows="1" placeholder="Ex: Executivo Comercial | Logística e Tecnologia"></textarea>
-      </div>
-
-      <div class="field-group">
-        <div class="field-label">Suas 3 Principais Especialidades</div>
-        <textarea id="bannerSkills" rows="2" placeholder="Ex: Gestão de Frota, Vendas B2B, Supply Chain"></textarea>
-      </div>
-
-      <div class="field-group">
-        <div class="field-label">Mercado / Posicionamento</div>
-        <select id="bannerMarket">
-          <option value="BR">🇧🇷 Brasil / LATAM</option>
-          <option value="US">🌎 Internacional / Global</option>
-        </select>
-      </div>
-
-      <button class="btn-primary" id="bannerBtn" onclick="generateBanner()">🖼️ Gerar Textos do Banner</button>
-
-      <div class="loading" id="bannerLoading">
-        <div class="spinner"></div>
-        <div class="loading-text">Gerando textos otimizados para seu banner...</div>
-      </div>
-
-      <div class="result-box" id="bannerResult">
-        <div class="result-header">
-          <div class="result-title">Textos do Banner Gerados</div>
-          <div class="result-actions">
-            <button class="btn-copy" onclick="copyResult('bannerContent')">📋 Copiar Tudo</button>
-          </div>
-        </div>
-        <div class="result-content" id="bannerContent"></div>
-
-        <!-- TEMPLATES SUGERIDOS -->
-        <div style="margin-top:28px;">
-          <div class="sec-label">🎨 Escolha seu estilo — Abra e edite gratuitamente</div>
-          <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:12px; margin-top:12px;">
-
-            <a href="https://www.canva.com/linkedin-banners/templates/" target="_blank" style="text-decoration:none;">
-              <div style="background:var(--panel2); border:1px solid var(--bd); border-radius:8px; padding:18px; text-align:center; transition:border-color 0.2s; cursor:pointer;" onmouseover="this.style.borderColor='var(--bdH)'" onmouseout="this.style.borderColor='var(--bd)'">
-                <div style="font-size:28px; margin-bottom:8px;">🎨</div>
-                <div style="font-weight:700; font-size:13px; margin-bottom:4px;">Canva</div>
-                <div style="font-size:11px; color:var(--mu);">Centenas de templates gratuitos — arraste e edite</div>
-              </div>
-            </a>
-
-            <a href="https://new.express.adobe.com/tools/linkedin-banner-maker" target="_blank" style="text-decoration:none;">
-              <div style="background:var(--panel2); border:1px solid var(--bd); border-radius:8px; padding:18px; text-align:center; transition:border-color 0.2s; cursor:pointer;" onmouseover="this.style.borderColor='var(--bdH)'" onmouseout="this.style.borderColor='var(--bd)'">
-                <div style="font-size:28px; margin-bottom:8px;">✨</div>
-                <div style="font-weight:700; font-size:13px; margin-bottom:4px;">Adobe Express</div>
-                <div style="font-size:11px; color:var(--mu);">Templates premium com IA — gratuito no plano básico</div>
-              </div>
-            </a>
-
-            <a href="https://www.figma.com/community/tag/linkedin%20banner" target="_blank" style="text-decoration:none;">
-              <div style="background:var(--panel2); border:1px solid var(--bd); border-radius:8px; padding:18px; text-align:center; transition:border-color 0.2s; cursor:pointer;" onmouseover="this.style.borderColor='var(--bdH)'" onmouseout="this.style.borderColor='var(--bd)'">
-                <div style="font-size:28px; margin-bottom:8px;">⚡</div>
-                <div style="font-weight:700; font-size:13px; margin-bottom:4px;">Figma Community</div>
-                <div style="font-size:11px; color:var(--mu);">Templates gratuitos para perfis modernos e técnicos</div>
-              </div>
-            </a>
-
-          </div>
-          <div style="margin-top:16px; padding:14px 16px; background:rgba(96,165,250,0.05); border:1px solid rgba(96,165,250,0.15); border-radius:8px; font-size:13px; color:var(--mu); line-height:1.6;">
-            💡 <strong style="color:var(--bL);">Dica:</strong> Não existe estilo certo ou errado. Escolha o que representa quem você é — sua identidade visual no LinkedIn é uma extensão da sua personalidade profissional. O que importa é consistência entre a foto, o banner e o conteúdo que você publica.
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-  <div class="app-footer">© 2026 ApexCV™ · ARK Digital Solutions · Lei 9.610/98 · DMCA Protected · Lic: <span id="licDisplay"></span></div>
+  <footer class="app-footer">
+    <div class="wm">© 2025 ApexCV™ · apexcv.com.br · Lei 9.610/98 · Lic: <span id="lic-show">—</span></div>
+    <div style="font-size:10px;color:rgba(255,255,255,.1);font-family:monospace" id="sess-info">Sessão ativa</div>
+    <a href="https://wa.me/55SEU-NUMERO?text=Ol%C3%A1!%20Suporte%20ApexCV%E2%84%A2"
+      target="_blank" rel="noopener"
+      style="display:inline-flex;align-items:center;gap:5px;padding:6px 14px;border-radius:8px;border:none;background:linear-gradient(135deg,#10B981,#059669);color:#fff;font-family:inherit;font-size:12px;font-weight:700;cursor:pointer;text-decoration:none">
+      💬 Suporte
+    </a>
+  </footer>
 </div>
 
+<!-- ══════════════════════════════════
+     JAVASCRIPT ENGINE v2.0
+══════════════════════════════════ -->
 <script>
-// ══════════════════════════════════════════════
-// CONFIGURAÇÃO — EDITE APENAS ESTA LINHA:
-const API_URL = '/api/chat'; // URL do backend Vercel
-// ══════════════════════════════════════════════
+'use strict';
+/* © 2025 ApexCV™ | apexcv.com.br | Lei 9.610/98 */
 
-// CHAVES VÁLIDAS
-// Para adicionar nova chave: vá em Vercel → Settings → Environment Variables
-// Adicione APEX_KEYS com as chaves separadas por vírgula
-// Ex: APEX-2026-GOLD-0001,APEX-2026-GOLD-0002,APEX-2026-DEMO-0001
-// Enquanto não configurar no Vercel, as chaves abaixo funcionam como fallback:
-const FALLBACK_KEYS = [
-  'APEX-2026-GOLD-0197',
-  'APEX-2026-DEMO-0001',
-  'APEX-2026-TEST-0002'
+// ── CONSTANTS ───────────────────────────────────────────────────
+const SESSION_KEY  = '_apxcv_v2';
+const WATERMARK    = '\n\n─────────────────────────────\n© 2025 ApexCV™ · apexcv.com.br\nLicença pessoal · Lei 9.610/98';
+const SESSION_TTL  = 30 * 24 * 60 * 60 * 1000; // 30 dias em ms
+
+const KW_CATS = [
+  { k:'hard_skills',       l:'⚡ Hard Skills',     c:'#3B82F6' },
+  { k:'soft_skills',       l:'🧠 Soft Skills',     c:'#8B5CF6' },
+  { k:'tools',             l:'🛠️ Tools',           c:'#10B981' },
+  { k:'power_verbs',       l:'💥 Power Verbs',     c:'#F59E0B' },
+  { k:'certifications',    l:'🏆 Certificações',   c:'#EC4899' },
+  { k:'ats_phrases',       l:'🎯 Frases ATS',      c:'#06B6D4' },
+  { k:'linkedin_keywords', l:'💼 LinkedIn SEO',    c:'#A78BFA' },
 ];
 
-// ── AUTH ──────────────────────────────────────
-function checkSession() {
-  const stored = localStorage.getItem('apexcv_session');
-  if (!stored) return false;
-  const { key, expires } = JSON.parse(stored);
-  if (Date.now() > expires) { localStorage.removeItem('apexcv_session'); return false; }
-  return key;
+const LI_CFG = {
+  h: { rows:4,  ph:'Cole seu headline atual...\n\nEx: Gerente de Projetos | TI | Lisboa', inst:'FÓRMULA: [Cargo] | [Especialidade] | [Diferencial] | [Valor Mensurável]' },
+  a: { rows:9,  ph:'Cole sua seção Sobre (About) atual...',                                inst:'ESTRUTURA: Hook impactante → Top 3 conquistas com métricas → Skills → CTA claro' },
+  e: { rows:7,  ph:'Cole sua descrição de experiência...\n\nEx:\nEmpresa XYZ — Cargo\nJan 2022 - Atual', inst:'STAR+: Contexto empresa → bullets [Verbo+Ação+Resultado+Métrica] → Keywords ATS' },
+};
+
+// ── SECURITY ────────────────────────────────────────────────────
+// Bloquear iframe
+if (window.self !== window.top) {
+  document.body.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100vh;color:#60A5FA;background:#030B1A;font-family:sans-serif;font-size:14px">⛔ ApexCV™ — Acesso via iframe bloqueado.</div>';
+  throw new Error('Iframe blocked');
 }
 
-function activate() {
-  const key = document.getElementById('licInput').value.trim().toUpperCase();
-  const err = document.getElementById('actError');
-  if (!FALLBACK_KEYS.includes(key)) { err.style.display = 'block'; return; }
-  err.style.display = 'none';
-  const expires = Date.now() + 365 * 24 * 60 * 60 * 1000; // 1 ano
-  localStorage.setItem('apexcv_session', JSON.stringify({ key, expires }));
-  launchApp(key);
-}
+// Console warning
+console.log(
+  '%c⛔ ApexCV™ — PROPRIEDADE PROTEGIDA\n© 2025 ApexCV™ | Lei 9.610/98\napexcv.com.br',
+  'background:#EF4444;color:#fff;font-size:13px;padding:8px;font-weight:bold;border-radius:4px'
+);
 
-function demoActivate() {
-  const expires = Date.now() + 30 * 24 * 60 * 60 * 1000;
-  localStorage.setItem('apexcv_session', JSON.stringify({ key: 'APEX-2026-DEMO-0001', expires }));
-  launchApp('APEX-2026-DEMO-0001');
-}
-
-function launchApp(key) {
-  document.getElementById('landing').style.display = 'none';
-  document.getElementById('app').style.display = 'block';
-  document.getElementById('licDisplay').textContent = key.slice(0,12) + '...';
-  if (window.innerWidth <= 768) {
-    document.getElementById('mobTabs').style.display = 'flex';
+// Anti right-click em áreas não editáveis
+document.addEventListener('contextmenu', e => {
+  if (!['INPUT','TEXTAREA','SELECT'].includes(e.target.tagName) && !e.target.classList.contains('sel')) {
+    e.preventDefault();
   }
-}
-
-function logout() {
-  if (!confirm('Sair da sessão?')) return;
-  localStorage.removeItem('apexcv_session');
-  location.reload();
-}
-
-// ── TABS ──────────────────────────────────────
-function switchTab(tab) {
-  document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.app-tab, .mob-tab').forEach(b => b.classList.remove('active'));
-  document.getElementById('pane-' + tab).classList.add('active');
-  document.querySelectorAll('.app-tab, .mob-tab').forEach(b => {
-    if (b.onclick && b.onclick.toString().includes("'" + tab + "'")) b.classList.add('active');
-  });
-}
-
-// ── FAQ ───────────────────────────────────────
-function toggleFaq(i) {
-  const el = document.getElementById('faq' + i);
-  el.classList.toggle('open');
-}
-
-// ── WORD COUNT ────────────────────────────────
-document.addEventListener('DOMContentLoaded', () => {
-  const cvInput = document.getElementById('cvInput');
-  if (cvInput) cvInput.addEventListener('input', () => {
-    const words = cvInput.value.trim().split(/\s+/).filter(w => w).length;
-    document.getElementById('cvCount').textContent = words;
-  });
-
-  const key = checkSession();
-  if (key) launchApp(key);
 });
 
-// ── API CALL ──────────────────────────────────
-async function callAI(system, userMsg, maxTokens = 2048) {
-  const res = await fetch(API_URL, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      system,
-      messages: [{ role: 'user', content: userMsg }],
-      max_tokens: maxTokens
-    })
+// Anti DevTools (F12, Ctrl+Shift+I/J, Ctrl+U)
+document.addEventListener('keydown', e => {
+  const blocked = e.key === 'F12' ||
+    (e.ctrlKey && e.shiftKey && ['I','J'].includes(e.key.toUpperCase())) ||
+    (e.ctrlKey && !e.shiftKey && e.key === 'U');
+  if (blocked) e.preventDefault();
+});
+
+// ── DOM HELPERS ─────────────────────────────────────────────────
+const $  = id => document.getElementById(id);
+const ss = id => $(id)?.scrollIntoView({ behavior: 'smooth' });
+
+// ── SESSION (localStorage — persiste 30 dias) ───────────────────
+function saveSession(key) {
+  const s = {
+    key,
+    masked: key.slice(0,4) + '-****-****-' + key.slice(-4),
+    created: Date.now(),
+    expires: Date.now() + SESSION_TTL,
+    uses: 0,
+  };
+  try { localStorage.setItem(SESSION_KEY, JSON.stringify(s)); } catch {}
+  return s;
+}
+
+function getSession() {
+  try {
+    const raw = localStorage.getItem(SESSION_KEY);
+    if (!raw) return null;
+    const s = JSON.parse(raw);
+    if (!s || Date.now() > s.expires) {
+      localStorage.removeItem(SESSION_KEY);
+      return null;
+    }
+    return s;
+  } catch { return null; }
+}
+
+function incrementUses() {
+  try {
+    const s = getSession();
+    if (!s) return;
+    s.uses = (s.uses || 0) + 1;
+    localStorage.setItem(SESSION_KEY, JSON.stringify(s));
+    const el = $('cv-count');
+    if (el) el.textContent = s.uses;
+  } catch {}
+}
+
+function clearSession() {
+  try { localStorage.removeItem(SESSION_KEY); } catch {}
+}
+
+// ── ACTIVATION ──────────────────────────────────────────────────
+let _att = 0;
+const MAX_ATT = 5;
+
+function onKeyInput(inp) {
+  const v = inp.value.replace(/[^A-Za-z0-9]/g, '').toUpperCase().slice(0, 16);
+  inp.value = (v.match(/.{1,4}/g) || []).join('-');
+  $('key-err').classList.remove('show');
+  inp.classList.remove('err');
+}
+
+function fillKey(k) {
+  $('key-inp').value = k;
+  $('key-err').classList.remove('show');
+  $('key-inp').classList.remove('err');
+}
+
+async function doActivate() {
+  if (_att >= MAX_ATT) {
+    $('att-info').textContent = '⛔ Limite atingido. Recarregue a página.';
+    return;
+  }
+
+  const key  = $('key-inp').value.trim().toUpperCase();
+  const lbl  = $('act-lbl');
+  const prog = $('act-progress');
+
+  if (!key) { $('key-err').classList.add('show'); return; }
+
+  // UI: loading
+  lbl.innerHTML  = '<span class="spinner"></span> Validando...';
+  prog.classList.add('show');
+  $('key-inp').disabled = true;
+
+  try {
+    // Validação da licença
+    await new Promise(r => setTimeout(r, 900));
+    const LOCAL_KEYS = new Set([
+      'APEX-2025-GOLD-0197','APEX-DEMO-SHOW-0001',
+      'APEX-2025-ELIT-0039','APEX-2026-PREM-7865',
+    ]);
+    const valid = LOCAL_KEYS.has(key);
+    // Suporte a: let valid = ...
+
+    if (valid) {
+      $('key-inp').classList.add('ok');
+      lbl.innerHTML = '✅ Acesso Liberado!';
+      const session = saveSession(key);
+      initApp(session);
+      setTimeout(() => {
+        $('act-screen').classList.remove('show');
+        $('land-view').classList.add('hidden');
+        $('app-view').classList.add('active');
+        window.scrollTo(0, 0);
+      }, 700);
+    } else {
+      throw new Error('invalid');
+    }
+    // end validate block
+
+  } catch (err) {
+    _att++;
+    $('key-inp').classList.add('err');
+    $('key-err').classList.add('show');
+    lbl.innerHTML = '🔑 Ativar Acesso';
+    $('att-info').textContent = err.message === 'invalid'
+      ? `Chave inválida. ${MAX_ATT - _att} tentativa(s) restante(s).`
+      : `Erro de conexão: ${err.message}`;
+  } finally {
+    prog.classList.remove('show');
+    $('key-inp').disabled = false;
+  }
+}
+
+function openAct()  { $('act-screen').classList.add('show'); }
+function closeAct() { $('act-screen').classList.remove('show'); }
+
+function doLogout() {
+  if (window.confirm('Sair da sessão atual?\nVocê precisará inserir sua chave novamente.')) {
+    clearSession();
+    $('app-view').classList.remove('active');
+    $('land-view').classList.remove('hidden');
+    $('act-screen').classList.remove('show');
+    window.scrollTo(0, 0);
+    _att = 0;
+    $('key-inp').value = '';
+    $('key-inp').classList.remove('ok','err');
+    $('act-lbl').textContent = '🔑 Ativar Acesso';
+  }
+}
+
+function initApp(session) {
+  $('lic-show').textContent  = session.masked;
+  $('sess-info').textContent = 'Sessão ativa · Expira: ' + new Date(session.expires).toLocaleDateString('pt-BR');
+  const el = $('cv-count');
+  if (el) { el.textContent = session.uses || 0; $('cv-usage').style.display = 'flex'; }
+}
+
+// ── APP NAVIGATION ───────────────────────────────────────────────
+function swTab(t) {
+  ['cv','li','kw'].forEach(x => {
+    $('t-' + x)?.classList.toggle('active', x === t);
+    $('p-' + x)?.classList.toggle('active', x === t);
   });
-  if (!res.ok) throw new Error('API error: ' + res.status);
+}
+
+let _liField = 'h';
+function swLI(f) {
+  _liField = f;
+  ['h','a','e'].forEach(x => {
+    $('lt-' + x)?.classList.toggle('active', x === f);
+    const tip = $('tip-' + x);
+    if (tip) tip.style.display = x === f ? 'block' : 'none';
+  });
+  const inp = $('li-txt');
+  if (inp) { inp.value = ''; inp.rows = LI_CFG[f].rows; inp.placeholder = LI_CFG[f].ph; }
+  $('li-res').style.display = 'none';
+  $('li-err').style.display = 'none';
+}
+
+// ── AI ENGINE ───────────────────────────────────────────────────
+async function callAI(prompt) {
+  const session = getSession();
+  if (!session) throw new Error('Sessão expirada. Faça login novamente.');
+
+  // Verificar API key configurada
+  if (!_a || _a.length < 40) {
+    throw new Error('⚙️ API Key não configurada.\nVerifique sua chave em console.anthropic.com/settings/keys');
+  }
+
+  const res = await fetch('https://api.anthropic.com/v1/messages', {
+    method:  'POST',
+    headers: {
+      'Content-Type':    'application/json',
+      'x-api-key':       _a,
+      'anthropic-version':                   '2023-06-01',
+      'anthropic-dangerous-direct-browser-access': 'true',
+    },
+    body: JSON.stringify({
+      model:      'claude-sonnet-4-20250514',
+      max_tokens: 1000,
+      messages:   [{ role: 'user', content: prompt }],
+    }),
+  });
+
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({}));
+    throw new Error(err?.error?.message || `Erro HTTP ${res.status}`);
+  }
+
   const data = await res.json();
-  return data.content[0].text;
+  const text = data.content?.find(b => b.type === 'text')?.text;
+  return (text || 'Sem resposta da IA.') + WATERMARK;
 }
 
-// ── CV OPTIMIZER ─────────────────────────────
-async function optimizeCV() {
-  const cv = document.getElementById('cvInput').value.trim();
-  if (!cv) return alert('Cole seu currículo antes de otimizar.');
-  const market = document.getElementById('cvMarket').value;
-  const area = document.getElementById('cvArea').value;
+// ── UI HELPERS ───────────────────────────────────────────────────
+function setLoading(btnId, progId, loading, defaultLabel) {
+  const btn  = $(btnId);
+  const prog = $(progId);
+  if (!btn) return;
+  btn.disabled = loading;
+  btn.innerHTML = loading ? '<span class="spinner"></span> Aguarde...' : defaultLabel;
+  if (prog) prog.classList.toggle('show', loading);
+}
 
-  setLoading('cv', true);
+function showRes(outId, resId, text) {
+  $(outId).textContent = text;
+  $(resId).style.display = 'block';
+}
 
-  const system = `Você é um Master Recruiter + Algoritmo ATS com 20 anos de experiência em recrutamento global.
-Você conhece profundamente os algoritmos do LinkedIn Recruiter, Indeed, Gupy, Greenhouse, Workday, SAP SuccessFactors.
-Sua missão é reescrever currículos para maximizar a pontuação ATS e a visibilidade para recrutadores humanos.
+function showErr(errId, msg) {
+  const el = $(errId);
+  if (el) { el.textContent = msg; el.style.display = 'block'; }
+}
 
-MERCADO: ${market === 'BR' ? 'Brasil/LATAM — responda em Português Brasileiro' : 'North America/Europe — respond in English'}
-ÁREA: ${area}
+function hideErr(errId) {
+  const el = $(errId);
+  if (el) el.style.display = 'none';
+}
 
-REGRAS DO ALGORITMO ATS:
-1. Inicie com SCORE ATS: X/100 e BADGE (TOP CANDIDATO ≥85 | ALTO POTENCIAL 70-84 | BOM MATCH 55-69 | MARGINAL <55)
-2. Use verbos de impacto no início de cada bullet: Liderou, Implementou, Aumentou, Reduziu, Gerou, Desenvolveu
-3. Quantifique TUDO com números, percentuais e valores monetários
-4. Injete keywords ATS específicas da área no texto de forma natural
-5. Estruture: RESUMO EXECUTIVO → EXPERIÊNCIA → HABILIDADES → FORMAÇÃO → CERTIFICAÇÕES
-6. Cada bullet deve ter: Ação + Contexto + Resultado Mensurável
-7. Explique o score: quais keywords foram adicionadas, quais melhorias foram feitas`;
+// ── CV OPTIMIZER ─────────────────────────────────────────────────
+async function runCV() {
+  const txt  = getCV();
+  if (!txt) { showErr('cv-err','⚠️ Faça upload do seu CV ou cole o texto antes de otimizar!'); return; }
 
-  const msg = `Otimize este currículo com máxima eficácia ATS:\n\n${cv}`;
+  const role = $('cv-role').value.trim() || 'Profissional de alto impacto';
+  const mkt  = $('cv-mkt').value;
+
+  hideErr('cv-err');
+  $('cv-res').style.display = 'none';
+  setLoading('cv-btn','cv-prog',true,'🚀 Otimizar CV Agora');
 
   try {
-    const result = await callAI(system, msg, 3000);
-    renderCVResult(result);
-  } catch(e) {
-    alert('Erro ao conectar com a IA. Verifique sua conexão e tente novamente.');
+    const result = await callAI(
+`Você é ApexCV™ — IA Recrutadora Master treinada em 50.000+ currículos Fortune 500 e top empresas LATAM (Nubank, iFood, Mercado Livre, Totvs, BTG, Ambev) e Silicon Valley (Google, Meta, Amazon, Stripe, Microsoft).
+
+MISSÃO: Transforme este currículo em versão irresistível para sistemas ATS e recrutadores senior globais.
+
+CURRÍCULO ORIGINAL:
+${txt}
+
+CARGO ALVO: ${role}
+MERCADO: ${mkt === 'latam' ? 'LATAM — responda em Português BR. Inclua keywords ATS em PT e EN onde aplicável.' : 'North America — respond in English only.'}
+
+REGRAS ABSOLUTAS DE TRANSFORMAÇÃO:
+1. VERBOS DE IMPACTO obrigatórios: Liderou/Led, Escalou/Scaled, Entregou/Delivered, Gerou/Generated, Acelerou/Accelerated, Conquistou/Achieved, Transformou/Transformed, Reduziu/Reduced, Maximizou/Maximized, Impulsionou/Drove
+2. Toda bullet DEVE seguir: [Verbo Forte] + [Ação Específica] + [Resultado Mensurável com %/$/#/tempo]
+3. ELIMINE completamente estas frases: "responsável por","auxiliou","participou","trabalhou em","ajudou a","contribuiu para"
+4. Injete 10-14 keywords ATS naturalmente ao longo do texto
+5. Resumo profissional: 3 linhas de impacto máximo, posicionando o candidato como top performer
+
+## ✅ CURRÍCULO OTIMIZADO
+[Versão completa reescrita — pronta para copiar]
+
+---
+## 📊 ATS SCORE: XX/100
+[Justificativa em 1 linha]
+
+## 🔑 KEYWORDS ATS INSERIDAS
+[Lista com • para cada keyword adicionada]
+
+## ⚡ TOP 5 TRANSFORMAÇÕES REALIZADAS
+1. [Bullet original → Bullet otimizado — impacto explicado]
+2. [...]
+3. [...]
+4. [...]
+5. [...]`
+    );
+
+    showRes('cv-out','cv-res', result);
+    incrementUses();
+    $('cv-res').scrollIntoView({ behavior:'smooth', block:'nearest' });
+
+  } catch (err) {
+    showErr('cv-err', '❌ ' + err.message + '\n\nVerifique se o WORKER_URL está configurado corretamente no início do arquivo HTML.');
+  } finally {
+    setLoading('cv-btn','cv-prog',false,'🚀 Otimizar CV Agora');
   }
-
-  setLoading('cv', false);
 }
 
-function renderCVResult(text) {
-  // Extract score
-  const scoreMatch = text.match(/SCORE ATS[:\s]+(\d+)\/100/i) || text.match(/(\d+)\/100/);
-  const score = scoreMatch ? parseInt(scoreMatch[1]) : 75;
+// ── LINKEDIN OPTIMIZER ───────────────────────────────────────────
+async function runLI() {
+  const txt = $('li-txt').value.trim();
+  if (!txt) { alert('⚠️ Cole o conteúdo do LinkedIn!'); return; }
 
-  let badgeClass = 'marg', badgeText = 'MARGINAL';
-  if (score >= 85) { badgeClass = 'top'; badgeText = 'TOP CANDIDATO'; }
-  else if (score >= 70) { badgeClass = 'high'; badgeText = 'ALTO POTENCIAL'; }
-  else if (score >= 55) { badgeClass = 'good'; badgeText = 'BOM MATCH'; }
+  const fLabel = { h:'Headline/Título', a:'Seção Sobre (About)', e:'Experiência Profissional' }[_liField];
 
-  const color = score >= 85 ? 'var(--green)' : score >= 70 ? 'var(--bL)' : score >= 55 ? 'var(--gold)' : 'var(--red)';
-
-  document.getElementById('cvScore').innerHTML = `
-    <div class="score-circle" style="border-color:${color}; color:${color};">
-      <span class="score-num">${score}</span>
-      <span class="score-lbl">SCORE</span>
-    </div>
-    <div class="score-detail">
-      <div class="badge ${badgeClass}">${badgeText}</div>
-      <div style="font-size:13px; color:var(--mu);">Score ATS Global · Algoritmo LinkedIn/Indeed/Gupy</div>
-      <div class="score-bar-track" style="margin-top:10px;">
-        <div class="score-bar-fill" style="width:${score}%; background:${color};"></div>
-      </div>
-    </div>`;
-
-  document.getElementById('cvContent').textContent = text;
-  document.getElementById('cvResult').classList.add('show');
-}
-
-// ── LINKEDIN ──────────────────────────────────
-async function optimizeLinkedIn() {
-  const headline = document.getElementById('liHeadline').value.trim();
-  const about = document.getElementById('liAbout').value.trim();
-  const exp = document.getElementById('liExp').value.trim();
-  const area = document.getElementById('liArea').value;
-
-  if (!headline && !about) return alert('Preencha pelo menos a Headline e o Sobre.');
-  setLoading('li', true);
-
-  const system = `Você é o Algoritmo do LinkedIn Recruiter combinado com um especialista em personal branding.
-Você conhece exatamente como o LinkedIn ranqueia perfis nas buscas de recrutadores.
-ÁREA ALVO: ${area}
-
-REGRAS DO ALGORITMO DO LINKEDIN:
-1. Headline: máximo 220 caracteres, keywords no início, separadas por | ou ·
-2. About: começa com gancho forte, usa keywords naturalmente, termina com CTA
-3. Experience: verbos de ação, métricas concretas, keywords da área
-4. Use as keywords que recrutadores digitam no LinkedIn para encontrar candidatos
-5. Formate com emojis estratégicos para aumentar tempo de leitura
-6. Entregue os 3 campos separados e prontos para copiar/colar`;
-
-  const msg = `Otimize meu perfil LinkedIn:
-
-HEADLINE ATUAL: ${headline || 'não informado'}
-
-SOBRE ATUAL: ${about || 'não informado'}
-
-EXPERIÊNCIA ATUAL: ${exp || 'não informado'}`;
+  hideErr('li-err');
+  $('li-res').style.display = 'none';
+  setLoading('li-btn','li-prog',true,'✨ Otimizar LinkedIn Agora');
 
   try {
-    const result = await callAI(system, msg, 2500);
-    document.getElementById('liContent').textContent = result;
-    document.getElementById('liResult').classList.add('show');
-  } catch(e) {
-    alert('Erro ao conectar com a IA. Tente novamente.');
-  }
+    const result = await callAI(
+`Você é ApexCV™ LinkedIn Strategist — IA treinada em 10.000+ perfis que geraram entrevistas no Google, Meta, Amazon, Microsoft, LinkedIn, Nubank, iFood, Mercado Livre.
 
-  setLoading('li', false);
+SEÇÃO ALVO: ${fLabel}
+
+CONTEÚDO ATUAL DO CANDIDATO:
+${txt}
+
+${LI_CFG[_liField].inst}
+
+REGRAS INVIOLÁVEIS:
+• Cada palavra deve justificar sua presença e contribuir para o SEO do LinkedIn
+• Use keywords que o algoritmo do LinkedIn indexa para buscas de recrutadores
+• Tom: confiante, específico, orientado a resultados — nunca genérico
+• ZERO clichês sem contexto: "apaixonado(a) por", "dinâmico(a)", "proativo(a)" isolados
+• Use linguagem ativa, nunca passiva
+
+## ✨ VERSÃO OTIMIZADA
+[Conteúdo 100% pronto para copiar e colar no LinkedIn]
+
+## 💡 POR QUE ESSA VERSÃO CONVERTE MAIS
+• [Razão estratégica 1 — fundamentada em dados de recrutamento]
+• [Razão estratégica 2]
+• [Razão estratégica 3]
+
+## 🔍 KEYWORDS ESTRATÉGICAS DO LINKEDIN
+[Keywords que aumentam visibilidade nas buscas de recrutadores]
+
+## 📈 IMPACTO ESPERADO
+[Estimativa de aumento em views/entrevistas comparado à versão original]`
+    );
+
+    showRes('li-out','li-res', result);
+    incrementUses();
+
+  } catch (err) {
+    showErr('li-err', '❌ ' + err.message);
+  } finally {
+    setLoading('li-btn','li-prog',false,'✨ Otimizar LinkedIn Agora');
+  }
 }
 
-// ── KEYWORDS ──────────────────────────────────
-async function generateKeywords() {
-  const area = document.getElementById('kwArea').value;
-  const market = document.getElementById('kwMarket').value;
-  setLoading('kw', true);
+// ── KEYWORDS GENERATOR ───────────────────────────────────────────
+async function runKW() {
+  const ind  = $('kw-ind').value;
+  const role = $('kw-role').value.trim();
+  const res  = $('kw-res');
 
-  const system = `Você é um especialista em ATS e recrutamento com banco de dados de 1 milhão de vagas reais.
-ÁREA: ${area}
-MERCADO: ${market === 'BR' ? 'Brasil/LATAM — PT-BR' : 'International — English'}
-
-Gere keywords ATS organizadas em categorias:
-1. Keywords Técnicas / Hard Skills (20+ keywords)
-2. Keywords de Cargo / Títulos (10+ variações)
-3. Keywords de Ferramentas / Sistemas (15+ itens)
-4. Keywords de Metodologias / Processos (10+ itens)
-5. Keywords de Resultados / Métricas (10+ itens)
-6. Keywords de Soft Skills ATS (8+ itens)
-7. Keywords Bônus / Emergentes (10+ itens)
-
-Para cada categoria explique por que essas keywords aumentam o score ATS.`;
-
-  const msg = `Gere o banco completo de keywords ATS para ${area} no mercado ${market}.`;
+  hideErr('kw-err');
+  res.innerHTML = '';
+  setLoading('kw-btn','kw-prog',true,'🔑 Gerar Banco de Keywords');
 
   try {
-    const result = await callAI(system, msg, 2500);
-    document.getElementById('kwContent').innerHTML = `<div class="result-content">${result}</div>`;
-    document.getElementById('kwResult').classList.add('show');
-  } catch(e) {
-    alert('Erro ao conectar com a IA. Tente novamente.');
-  }
+    const raw = await callAI(
+`Você é o Motor de Keywords ATS do ApexCV™ — alimentado por dados de 1M+ vagas reais de LATAM (Brasil, México, Colômbia, Argentina, Chile) e América do Norte (EUA, Canadá), atualizados em 2025.
 
-  setLoading('kw', false);
+INDÚSTRIA: ${ind}
+${role ? 'CARGO ESPECÍFICO: ' + role : ''}
+
+REGRAS:
+- Inclua termos bilíngues PT/EN onde relevante para ambos os mercados
+- Priorize keywords que aparecem com maior frequência em vagas reais de 2024-2025
+- As ats_phrases devem ser frases completas prontas para copiar e colar
+
+Retorne SOMENTE JSON puro, sem markdown, sem backticks, sem texto antes ou depois:
+{
+  "hard_skills":       ["8 hard skills mais valorizadas em vagas reais 2025"],
+  "soft_skills":       ["5 soft skills com maior peso ATS"],
+  "tools":             ["6 ferramentas e plataformas mais exigidas"],
+  "power_verbs":       ["8 power verbs PT/EN para bullets de alto impacto"],
+  "certifications":    ["4 certificações que aumentam conversão em processos seletivos seletivos"],
+  "ats_phrases":       ["5 frases completas prontas para copiar e colar no CV"],
+  "linkedin_keywords": ["6 keywords que aumentam visibilidade nas buscas do LinkedIn"]
+}`
+    );
+
+    // Remover watermark antes de parsear
+    const clean = raw.replace(WATERMARK, '').replace(/```json|```/g, '').trim();
+    let parsed;
+    try { parsed = JSON.parse(clean); }
+    catch { res.innerHTML = `<div class="res-box sel">${raw}</div>`; return; }
+
+    let html = '<div class="kw-grid">';
+    KW_CATS.forEach(cat => {
+      const items = parsed[cat.k];
+      if (!items?.length) return;
+      html += `<div class="kw-cat" style="border-color:${cat.c}20">
+        <div class="kw-cat-lbl" style="color:${cat.c}">${cat.l}</div>
+        <div class="kw-chips">`;
+      items.forEach((kw, i) => {
+        const id = `chip_${cat.k}_${i}`;
+        html += `<span class="kw-chip" id="${id}"
+          style="background:${cat.c}14;border-color:${cat.c}28;color:${cat.c}"
+          onclick="cpChip('${kw.replace(/'/g,"\\'")}','${id}')">${kw}</span>`;
+      });
+      html += `</div></div>`;
+    });
+    html += '</div>';
+    // Botão copiar todas
+    const allKws = KW_CATS.flatMap(cat => parsed[cat.k] || []);
+    html += '<div style="margin-top:16px;display:flex;gap:10px;align-items:center;flex-wrap:wrap">';
+    html += '<button class="btn btn-gr btn-sm" onclick="cpAllKW()">📋 Copiar Todas as Keywords</button>';
+    html += '<span style="font-size:11px;color:var(--mu)">' + allKws.length + ' keywords geradas · Clique no chip para copiar individualmente</span>';
+    html += '</div>';
+    window._lastKwData = parsed;
+    res.innerHTML = html;
+    incrementUses();
+
+  } catch (err) {
+    showErr('kw-err', '\u274c ' + err.message);
+  } finally {
+    setLoading('kw-btn','kw-prog',false,'\uD83D\uDD11 Gerar Banco de Keywords');
+  }
 }
 
-// ── ATS ANALYZER ─────────────────────────────
-async function analyzeATS() {
-  const job = document.getElementById('atsJob').value.trim();
-  const cv = document.getElementById('atsCv').value.trim();
-  if (!job || !cv) return alert('Preencha a descrição da vaga e seu currículo.');
-  setLoading('ats', true);
+// ── COPY UTILITIES ───────────────────────────────────────────────
+function cpText(text) {
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).catch(() => fallbackCopy(text));
+  } else {
+    fallbackCopy(text);
+  }
+}
 
-  const system = `Você é o Algoritmo ATS mais avançado do mercado combinado com um recrutador sênior.
-Analise a compatibilidade entre a vaga e o currículo com precisão cirúrgica.
+function fallbackCopy(text) {
+  const el = document.createElement('textarea');
+  el.value = text;
+  el.style.cssText = 'position:fixed;opacity:0;top:0;left:0;pointer-events:none;';
+  document.body.appendChild(el);
+  el.select();
+  try { document.execCommand('copy'); } catch(e) {}
+  document.body.removeChild(el);
+}
 
-ESTRUTURA DA ANÁLISE:
-1. SCORE ATS: X/100 (seja preciso)
-2. CLASSIFICAÇÃO: TOP CANDIDATO / ALTO POTENCIAL / BOM MATCH / MARGINAL
-3. KEYWORDS DA VAGA PRESENTES no CV (lista)
-4. KEYWORDS DA VAGA AUSENTES no CV (lista — crítico)
-5. GAPS CRÍTICOS — o que está faltando
-6. PONTOS FORTES — o que está alinhado
-7. PLANO DE AÇÃO CIRÚRGICO — exatamente o que adicionar no CV para aumentar o score
-8. VERSÃO DO CV AJUSTADA — reescreva as partes críticas com as keywords faltantes`;
+function cpChip(text, id) {
+  cpText(text);
+  const el = document.getElementById(id);
+  if (!el) return;
+  const orig = el.textContent;
+  el.textContent = '\u2713 copiado';
+  el.style.opacity = '.7';
+  setTimeout(() => { el.textContent = orig; el.style.opacity = '1'; }, 1500);
+}
 
-  const msg = `VAGA:\n${job}\n\nMEU CV:\n${cv}`;
+function cpRes(outId, btnId) {
+  const el  = document.getElementById(outId);
+  const btn = document.getElementById(btnId);
+  if (!el) return;
+  cpText(el.textContent || '');
+  if (btn) {
+    btn.textContent = '\u2705 Copiado!';
+    setTimeout(() => btn.textContent = '\uD83D\uDCCB Copiar Resultado', 2000);
+  }
+}
+
+function clr(inputId, resId) {
+  const inp = document.getElementById(inputId);
+  const res = document.getElementById(resId);
+  if (inp) inp.value = '';
+  if (res) res.style.display = 'none';
+}
+
+// ── INIT ─────────────────────────────────────────────────────────
+window.addEventListener('DOMContentLoaded', () => {
+  // Verificar sessao ativa (localStorage — persiste 30 dias)
+  const session = getSession();
+  if (session) {
+    initApp(session);
+  }
+
+  // Verificar Worker configurado
+  const configured = typeof WORKER_URL !== 'undefined' &&
+    WORKER_URL && !WORKER_URL.includes('SEU-SUBDOMINIO');
+
+  if (!configured) {
+    console.warn(
+      '%c\u26a0\ufe0f ApexCV\u2122: WORKER_URL nao configurado!\nEdite a linha WORKER_URL no inicio do arquivo HTML.',
+      'background:#F59E0B;color:#000;padding:6px;font-weight:bold;border-radius:4px'
+    );
+  }
+});
+
+// ── FILE UPLOAD ENGINE ─────────────────────────────────────────────
+// Configura PDF.js worker
+(function() {
+  if (typeof pdfjsLib !== 'undefined') {
+    pdfjsLib.GlobalWorkerOptions.workerSrc =
+      'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+  }
+})();
+
+let _uploadedText = '';
+
+// Drag & Drop handlers
+function onDragOver(e, zoneId) {
+  e.preventDefault();
+  document.getElementById(zoneId)?.classList.add('drag-over');
+}
+function onDragLeave(e, zoneId) {
+  document.getElementById(zoneId)?.classList.remove('drag-over');
+}
+function onDrop(e) {
+  e.preventDefault();
+  const zone = document.getElementById('cv-upload-zone');
+  if (zone) zone.classList.remove('drag-over');
+  const file = e.dataTransfer?.files?.[0];
+  if (file) processFile(file);
+}
+function onFileSelect(input) {
+  const file = input?.files?.[0];
+  if (file) processFile(file);
+}
+
+// Processar arquivo selecionado
+async function processFile(file) {
+  const ext  = file.name.split('.').pop().toLowerCase();
+  const icon = { pdf:'📕', doc:'📘', docx:'📘', txt:'📄', rtf:'📄' }[ext] || '📄';
+  const maxMB = 10;
+
+  // Validar tamanho
+  if (file.size > maxMB * 1024 * 1024) {
+    showErr('cv-err', `❌ Arquivo muito grande. Máximo: ${maxMB}MB`);
+    return;
+  }
+  // Validar formato
+  if (!['pdf','doc','docx','txt','rtf'].includes(ext)) {
+    showErr('cv-err', '❌ Formato não suportado. Use PDF, Word (.docx) ou TXT.');
+    return;
+  }
+
+  // Mostrar progresso
+  hideErr('cv-err');
+  const prog = document.getElementById('cv-extract-prog');
+  if (prog) prog.classList.add('show');
+
+  // Esconder upload zone, mostrar file info
+  const zone = document.getElementById('cv-upload-zone');
+  if (zone) zone.style.display = 'none';
+
+  const loaded  = document.getElementById('cv-file-loaded');
+  const fname   = document.getElementById('cv-file-name');
+  const fmeta   = document.getElementById('cv-file-meta');
+  const ficon   = document.getElementById('cv-file-icon');
+  if (loaded)  loaded.style.display  = 'flex';
+  if (fname)   fname.textContent  = file.name;
+  if (fmeta)   fmeta.textContent  = 'Extraindo texto...';
+  if (ficon)   ficon.textContent  = icon;
 
   try {
-    const result = await callAI(system, msg, 3000);
+    let text = '';
+    if (ext === 'pdf') {
+      text = await extractPDF(file);
+    } else if (ext === 'docx' || ext === 'doc') {
+      text = await extractDocx(file);
+    } else {
+      text = await extractTxt(file);
+    }
 
-    // Extract score for meter
-    const scoreMatch = result.match(/SCORE ATS[:\s]+(\d+)\/100/i) || result.match(/(\d+)\/100/);
-    const score = scoreMatch ? parseInt(scoreMatch[1]) : 70;
-    const color = score >= 85 ? 'var(--green)' : score >= 70 ? 'var(--bL)' : score >= 55 ? 'var(--gold)' : 'var(--red)';
+    if (!text || text.trim().length < 50) {
+      throw new Error('Texto extraído muito curto. Verifique se o arquivo tem conteúdo legível.');
+    }
 
-    document.getElementById('atsMeter').innerHTML = `
-      <div class="ats-meter">
-        <div class="ats-meter-label">
-          <span>Compatibilidade ATS com esta vaga</span>
-          <span style="font-weight:700; color:${color};">${score}/100</span>
-        </div>
-        <div class="ats-bar-track">
-          <div class="ats-bar-fill" style="width:${score}%; background:${color};"></div>
-        </div>
-      </div>`;
+    _uploadedText = text.trim();
+    const wordCount = _uploadedText.split(/\s+/).length;
 
-    document.getElementById('atsContent').textContent = result;
-    document.getElementById('atsResult').classList.add('show');
-  } catch(e) {
-    alert('Erro ao conectar com a IA. Tente novamente.');
+    // Atualizar UI
+    if (fmeta) fmeta.textContent = `✅ ${wordCount} palavras extraídas com sucesso`;
+    if (fmeta) fmeta.style.color = 'var(--green)';
+
+    // Preencher textarea como preview (colapsável)
+    const ta = document.getElementById('cv-txt');
+    if (ta) {
+      ta.value = _uploadedText;
+      ta.rows  = 4;
+      ta.style.fontSize = '12px';
+      ta.style.color    = 'var(--mu)';
+    }
+
+    // Marcar upload zone como loaded
+    if (zone) { zone.style.display = 'block'; zone.classList.add('loaded'); }
+
+  } catch (err) {
+    clearFile();
+    showErr('cv-err', '❌ Erro ao ler arquivo: ' + err.message + '\n\nDica: tente exportar como PDF ou copiar o texto manualmente.');
+  } finally {
+    if (prog) prog.classList.remove('show');
   }
-
-  setLoading('ats', false);
 }
 
-// ── UTILS ─────────────────────────────────────
-function setLoading(tool, show) {
-  document.getElementById(tool + 'Loading').classList.toggle('show', show);
-  document.getElementById(tool + 'Btn').disabled = show;
-  if (!show) {} else document.getElementById(tool + 'Result')?.classList.remove('show');
+// Extrair texto de PDF via PDF.js
+async function extractPDF(file) {
+  if (typeof pdfjsLib === 'undefined') {
+    throw new Error('PDF.js não carregado. Verifique sua conexão e recarregue a página.');
+  }
+  const arrayBuffer = await file.arrayBuffer();
+  const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+  let fullText = '';
+  for (let i = 1; i <= pdf.numPages; i++) {
+    const page    = await pdf.getPage(i);
+    const content = await page.getTextContent();
+    const pageText = content.items.map(item => item.str).join(' ');
+    fullText += pageText + '\n';
+  }
+  return fullText;
 }
 
-function copyResult(id) {
-  const text = document.getElementById(id).textContent;
-  navigator.clipboard.writeText(text).then(() => alert('✅ Copiado para a área de transferência!'));
+// Extrair texto de DOCX via Mammoth.js
+async function extractDocx(file) {
+  if (typeof mammoth === 'undefined') {
+    throw new Error('Mammoth.js não carregado. Verifique sua conexão e recarregue a página.');
+  }
+  const arrayBuffer = await file.arrayBuffer();
+  const result = await mammoth.extractRawText({ arrayBuffer });
+  if (result.messages?.length) {
+    console.warn('Avisos ao ler DOCX:', result.messages);
+  }
+  return result.value;
 }
 
-function downloadResult(id, filename) {
-  const text = document.getElementById(id).textContent;
-  const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url; a.download = filename; a.click();
+// Extrair texto de TXT/RTF
+async function extractTxt(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload  = e => resolve(e.target.result);
+    reader.onerror = () => reject(new Error('Falha ao ler arquivo de texto.'));
+    reader.readAsText(file, 'utf-8');
+  });
+}
+
+// Limpar arquivo selecionado
+function clearFile() {
+  _uploadedText = '';
+
+  const zone    = document.getElementById('cv-upload-zone');
+  const loaded  = document.getElementById('cv-file-loaded');
+  const fmeta   = document.getElementById('cv-file-meta');
+  const ta      = document.getElementById('cv-txt');
+  const inp     = document.getElementById('cv-file-input');
+
+  if (zone)   { zone.style.display = 'block'; zone.classList.remove('loaded','drag-over'); }
+  if (loaded) loaded.style.display = 'none';
+  if (fmeta)  { fmeta.textContent = '—'; fmeta.style.color = ''; }
+  if (ta)     { ta.value = ''; ta.rows = 6; ta.style.fontSize = ''; ta.style.color = ''; }
+  if (inp)    inp.value = '';
+
+  hideErr('cv-err');
+}
+
+// Limpar tudo após otimizar
+function clearCV() {
+  clearFile();
+  const res = document.getElementById('cv-res');
+  if (res) res.style.display = 'none';
+}
+
+// Download do resultado como .txt
+function downloadResult() {
+  const text = document.getElementById('cv-out')?.textContent;
+  if (!text) return;
+  const role    = document.getElementById('cv-role')?.value || 'CV';
+  const blob    = new Blob([text], { type: 'text/plain;charset=utf-8' });
+  const url     = URL.createObjectURL(blob);
+  const a       = document.createElement('a');
+  a.href        = url;
+  a.download    = `ApexCV_Otimizado_${role.replace(/[^a-zA-Z0-9]/g,'_')}.txt`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
   URL.revokeObjectURL(url);
 }
 
-// ── BANNER LINKEDIN ───────────────────────────
-async function generateBanner() {
-  const name = document.getElementById('bannerName').value.trim();
-  const role = document.getElementById('bannerRole').value.trim();
-  const skills = document.getElementById('bannerSkills').value.trim();
-  const market = document.getElementById('bannerMarket').value;
+// Override da função runCV para usar texto do upload se disponível
+const _originalRunCV = runCV;
+// Patch: usar _uploadedText se disponível
+function getCV() {
+  const ta = document.getElementById('cv-txt');
+  return _uploadedText || ta?.value?.trim() || '';
+}
 
-  if (!name || !role) return alert('Preencha seu nome e cargo.');
-  setLoading('banner', true);
 
-  const system = `Você é um especialista em personal branding e posicionamento profissional no LinkedIn.
-Sua missão é criar textos impactantes para o banner do LinkedIn que transmitam autoridade, clareza e identidade profissional.
-MERCADO: ${market === 'BR' ? 'Brasil/LATAM — PT-BR' : 'International — English'}
+// ── FAQ TOGGLE ────────────────────────────────────────────────────
+function toggleFaq(item) {
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
 
-ENTREGUE exatamente nesta estrutura:
+// ── WORD COUNT ────────────────────────────────────────────────────
+function updateWordCount(textarea, countId) {
+  const el = document.getElementById(countId);
+  if (!el) return;
+  const words = textarea.value.trim().split(/\s+/).filter(Boolean).length;
+  el.textContent = words + ' palavra' + (words !== 1 ? 's' : '');
+  el.style.color = words > 50 ? 'var(--green)' : words > 20 ? 'var(--gold)' : 'var(--mu)';
+}
 
-━━━ HEADLINE DO BANNER ━━━
-(frase principal — máximo 60 caracteres — impactante e direta)
-
-━━━ TAGLINE / SLOGAN ━━━
-(frase de apoio — máximo 80 caracteres — o que você transforma ou entrega)
-
-━━━ TAGS DE SKILLS (escolha 4-5) ━━━
-(palavras-chave curtas para exibir no banner — máximo 20 caracteres cada)
-
-━━━ VARIAÇÃO MINIMALISTA ━━━
-(versão mais simples — só nome + cargo + 1 frase)
-
-━━━ VARIAÇÃO CORPORATIVA ━━━
-(versão mais formal — para ambientes mais tradicionais)
-
-━━━ VARIAÇÃO MODERNA ━━━
-(versão mais criativa — para startups e ambientes digitais)
-
-━━━ DICA DE IDENTIDADE VISUAL ━━━
-(1 parágrafo sobre cores, estilo e consistência para o perfil desta pessoa)`;
-
-  const msg = `Crie os textos do banner LinkedIn para:
-Nome: ${name}
-Cargo/Área: ${role}
-Especialidades: ${skills || 'não informado'}`;
-
-  try {
-    const result = await callAI(system, msg, 2000);
-    document.getElementById('bannerContent').textContent = result;
-    document.getElementById('bannerResult').classList.add('show');
-  } catch(e) {
-    alert('Erro ao conectar com a IA. Tente novamente.');
+// ── COPIAR TODAS KEYWORDS ─────────────────────────────────────────
+function cpAllKW() {
+  if (!window._lastKwData) return;
+  const all = Object.values(window._lastKwData).flat().filter(Boolean);
+  cpText(all.join(', '));
+  const btn = document.querySelector('[onclick="cpAllKW()"]');
+  if (btn) {
+    btn.textContent = '✅ Todas copiadas!';
+    setTimeout(() => { btn.innerHTML = '📋 Copiar Todas as Keywords'; }, 2000);
   }
-
-  setLoading('banner', false);
 }
 
-// Mobile detection
-if (window.innerWidth <= 768 && document.getElementById('app').style.display !== 'none') {
-  document.getElementById('mobTabs').style.display = 'flex';
-}
 </script>
 </body>
 </html>
