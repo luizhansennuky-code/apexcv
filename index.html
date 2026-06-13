@@ -1143,7 +1143,7 @@ async function callAI(prompt) {
     },
     body: JSON.stringify({
       model:      'claude-sonnet-4-20250514',
-      max_tokens: 1000,
+      max_tokens: 4096,
       messages:   [{ role: 'user', content: prompt }],
     }),
   });
@@ -1208,14 +1208,18 @@ CARGO ALVO: ${role}
 MERCADO: ${mkt === 'latam' ? 'LATAM — responda em Português BR. Inclua keywords ATS em PT e EN onde aplicável.' : 'North America — respond in English only.'}
 
 REGRAS ABSOLUTAS DE TRANSFORMAÇÃO:
-1. VERBOS DE IMPACTO obrigatórios: Liderou/Led, Escalou/Scaled, Entregou/Delivered, Gerou/Generated, Acelerou/Accelerated, Conquistou/Achieved, Transformou/Transformed, Reduziu/Reduced, Maximizou/Maximized, Impulsionou/Drove
-2. Toda bullet DEVE seguir: [Verbo Forte] + [Ação Específica] + [Resultado Mensurável com %/$/#/tempo]
-3. ELIMINE completamente estas frases: "responsável por","auxiliou","participou","trabalhou em","ajudou a","contribuiu para"
-4. Injete 10-14 keywords ATS naturalmente ao longo do texto
-5. Resumo profissional: 3 linhas de impacto máximo, posicionando o candidato como top performer
+1. PROIBIDO GENERALIZAR: use APENAS os fatos reais do currículo original — empresas, cargos, datas, setores, conquistas citadas. NUNCA invente experiências nem escreva frases que serviriam para qualquer pessoa.
+2. COBERTURA TOTAL: TODAS as experiências do currículo original DEVEM aparecer reescritas e EXPANDIDAS — nenhuma pode ser resumida, omitida ou condensada.
+3. Cada experiência deve ter 4-6 bullets no formato: [Verbo Forte] + [Ação Específica daquele contexto] + [Resultado Mensurável com %/$/#/tempo]
+4. VERBOS DE IMPACTO: Liderou/Led, Escalou/Scaled, Entregou/Delivered, Gerou/Generated, Acelerou/Accelerated, Conquistou/Achieved, Transformou/Transformed, Reduziu/Reduced, Maximizou/Maximized, Impulsionou/Drove
+5. Se o original não tiver métrica, INFIRA um valor conservador e plausível pelo contexto e marque com [ajustar]: ex "Reduziu custos operacionais em ~15% [ajustar]"
+6. ELIMINE: "responsável por","auxiliou","participou","trabalhou em","ajudou a","contribuiu para"
+7. Injete 12-16 keywords ATS do cargo alvo distribuídas naturalmente
+8. Resumo profissional: 4-5 linhas densas conectando a trajetória REAL do candidato ao cargo alvo
+9. EXTENSÃO MÍNIMA do currículo otimizado: 450 palavras. Se o original for longo, mantenha a riqueza — nunca corte conteúdo.
 
 ## ✅ CURRÍCULO OTIMIZADO
-[Versão completa reescrita — pronta para copiar]
+[Versão completa reescrita — TODAS as experiências do original expandidas com profundidade, pronta para copiar]
 
 ---
 ## 📊 ATS SCORE: XX/100
@@ -1266,14 +1270,17 @@ ${txt}
 ${LI_CFG[_liField].inst}
 
 REGRAS INVIOLÁVEIS:
-• Cada palavra deve justificar sua presença e contribuir para o SEO do LinkedIn
-• Use keywords que o algoritmo do LinkedIn indexa para buscas de recrutadores
+• ANCORAGEM NO REAL: construa a versão otimizada usando APENAS os fatos do conteúdo fornecido — setores, empresas, conquistas, números citados. PROIBIDO texto que serviria para qualquer perfil.
+• PROFUNDIDADE OBRIGATÓRIA: se a seção for About, entregue 5 parágrafos completos (hook forte de 2 linhas → trajetória com fatos reais → top 3 conquistas com métricas → stack de competências indexáveis → CTA). Se for Experiência, entregue contexto da empresa + 5-6 bullets densos por experiência. Se for Headline, entregue a versão principal + 3 variações A/B.
+• Se faltar métrica no original, infira valor conservador e marque [ajustar]
+• Use keywords que o algoritmo do LinkedIn indexa para buscas de recrutadores — em PT e EN
 • Tom: confiante, específico, orientado a resultados — nunca genérico
 • ZERO clichês sem contexto: "apaixonado(a) por", "dinâmico(a)", "proativo(a)" isolados
 • Use linguagem ativa, nunca passiva
+• EXTENSÃO MÍNIMA da versão otimizada: About 250+ palavras; Experiência 150+ palavras por cargo; Headline 3 variações
 
 ## ✨ VERSÃO OTIMIZADA
-[Conteúdo 100% pronto para copiar e colar no LinkedIn]
+[Conteúdo completo, denso e específico do candidato — 100% pronto para copiar e colar no LinkedIn]
 
 ## 💡 POR QUE ESSA VERSÃO CONVERTE MAIS
 • [Razão estratégica 1 — fundamentada em dados de recrutamento]
