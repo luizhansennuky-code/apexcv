@@ -706,6 +706,7 @@ nav { position:sticky; top:0; z-index:200; display:flex; align-items:center; jus
       <button class="app-tab active" id="t-cv" onclick="swTab('cv')">📄 CV Optimizer</button>
       <button class="app-tab" id="t-li" onclick="swTab('li')">💼 LinkedIn</button>
       <button class="app-tab" id="t-kw" onclick="swTab('kw')">🔑 Keywords</button>
+      <button class="app-tab" id="t-ats" onclick="swTab('ats')">🎯 ATS Analyzer</button>
     </div>
     <button class="btn btn-gh btn-sm" onclick="doLogout()">🔒 Sair</button>
   </header>
@@ -887,6 +888,54 @@ nav { position:sticky; top:0; z-index:200; display:flex; align-items:center; jus
       </button>
       <div id="kw-res"></div>
       <div id="kw-err" class="err-box" style="display:none"></div>
+    </div>
+
+
+    <!-- ─ ATS ANALYZER ─ -->
+    <div class="tab-pane" id="p-ats">
+      <div class="tab-title">🎯 ATS Analyzer</div>
+      <div class="tab-sub">Cole a descrição da vaga e seu currículo. O algoritmo calcula seu score real, identifica gaps críticos e entrega o plano exato para ser selecionado.</div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px">
+        <div>
+          <label class="lbl">Descrição da Vaga</label>
+          <textarea id="ats-job" class="fi" rows="9" style="resize:vertical;line-height:1.7" placeholder="Cole a descrição completa da vaga...&#10;&#10;Ex: Senior Developer - React, Node.js, AWS&#10;Responsabilidades: Liderar time de 5 devs...&#10;Requisitos: 5+ anos, inglês avançado..."></textarea>
+        </div>
+        <div>
+          <label class="lbl">Seu Currículo</label>
+          <textarea id="ats-cv" class="fi" rows="9" style="resize:vertical;line-height:1.7" placeholder="Cole seu currículo atual (texto simples)..."></textarea>
+        </div>
+      </div>
+
+      <div id="ats-score-block" style="display:none;margin-bottom:20px;padding:20px;background:rgba(8,20,45,.95);border:1px solid rgba(96,165,250,.2);border-radius:14px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+          <div id="ats-score-num" style="font-size:42px;font-weight:800;font-family:var(--fH)"></div>
+          <div id="ats-score-lbl" style="font-size:15px;font-weight:700"></div>
+        </div>
+        <div style="height:10px;border-radius:5px;background:rgba(255,255,255,.08);overflow:hidden">
+          <div id="ats-score-bar" style="height:100%;border-radius:5px;transition:width 1s ease;width:0%"></div>
+        </div>
+      </div>
+
+      <div id="ats-prog" class="prog-box" style="display:none">
+        <div class="spinner"></div>
+        <span class="progress-text">Algoritmo ATS calculando compatibilidade...</span>
+      </div>
+      <button class="btn btn-p" id="ats-btn" onclick="runATS()" style="padding:14px 32px;font-size:15px;margin-bottom:6px">
+        🎯 Analisar Compatibilidade com a Vaga
+      </button>
+      <div id="ats-err" class="err-box" style="display:none"></div>
+      <div id="ats-res" class="res-wrap" style="display:none">
+        <div class="res-hdr">
+          <span>📊 Relatório de Compatibilidade ATS</span>
+          <div style="display:flex;gap:8px">
+            <button class="btn btn-gr btn-sm" onclick="cpRes('ats-out','ats-cp-btn')" id="ats-cp-btn">📋 Copiar</button>
+            <button class="btn btn-p btn-sm" onclick="dlRes('ats-out','ApexCV_ATS_Report')">⬇️ Baixar</button>
+            <button class="btn-ghost btn-sm" onclick="document.getElementById('ats-res').style.display='none';document.getElementById('ats-score-block').style.display='none'">🔄 Nova Análise</button>
+          </div>
+        </div>
+        <pre id="ats-out" class="res-box sel"></pre>
+      </div>
     </div>
 
   </main>
@@ -1103,7 +1152,7 @@ function initApp(session) {
 
 // ── APP NAVIGATION ───────────────────────────────────────────────
 function swTab(t) {
-  ['cv','li','kw'].forEach(x => {
+  ['cv','li','kw','ats'].forEach(x => {
     $('t-' + x)?.classList.toggle('active', x === t);
     $('p-' + x)?.classList.toggle('active', x === t);
   });
@@ -1670,6 +1719,82 @@ function cpAllKW() {
   }
 }
 
+
+// ── ATS ANALYZER ────────────────────────────────────────────────
+async function runATS() {
+  const job = document.getElementById('ats-job').value.trim();
+  const cv  = document.getElementById('ats-cv').value.trim();
+  if (!job || !cv) { showErr('ats-err','⚠️ Cole a descrição da vaga E seu currículo.'); return; }
+  hideErr('ats-err');
+  document.getElementById('ats-res').style.display = 'none';
+  document.getElementById('ats-score-block').style.display = 'none';
+  setLoading('ats-btn','ats-prog',true,'🎯 Analisar Compatibilidade com a Vaga');
+  try {
+    const result = await callAI(
+`Você é o NÚCLEO ALGORÍTMICO das plataformas de emprego globais (LinkedIn Recruiter, Indeed, Glassdoor, Gupy). Execute análise COMPLETA de compatibilidade.
+
+DESCRIÇÃO DA VAGA:
+${job}
+
+CURRÍCULO DO CANDIDATO:
+${cv}
+
+REGRAS: Analise CADA requisito da vaga contra o currículo REAL. Cite textualmente o que encontrou ou não. NUNCA generalize.
+
+## 📊 ATS SCORE FINAL: XX/100
+Classificação: [🏆 TOP CANDIDATO / 🚀 ALTO POTENCIAL / ✅ BOM MATCH / ⚠️ MARGINAL / ❌ NÃO QUALIFICADO]
+Badge: [⭐ FEATURED / 🔥 HOT / ✔️ QUALIFIED]
+Posição estimada: X de cada 100 candidatos
+
+## 📈 SCORE DETALHADO
+• Técnico (Hard Skills): XX/100 — [justificativa com fatos do CV]
+• Experiência (Senioridade): XX/100 — [justificativa]
+• Comportamental (Soft Skills): XX/100 — [justificativa]
+• Potencial: XX/100 — [justificativa]
+
+## 🔍 PALAVRAS-CHAVE DA VAGA
+🔴 OBRIGATÓRIAS encontradas: [lista — peso 70%]
+🔴 OBRIGATÓRIAS faltantes: [lista — GAPS CRÍTICOS]
+🟡 DESEJÁVEIS encontradas: [lista]
+🟡 DESEJÁVEIS faltantes: [lista]
+🟢 DIFERENCIAIS presentes (bônus): [lista]
+
+## 🚀 BÔNUS APLICADOS
+[+X pontos cada — cite o fato real do CV]
+Total de bônus: +XX pontos
+
+## 💡 POTENCIAL OCULTO DETECTADO
+[Sinais do CV acima do explícito: promoções rápidas, multidisciplinaridade, adaptabilidade]
+
+## 📋 RECOMENDAÇÃO FINAL
+Decisão: [AVANÇAR PARA ENTREVISTA / LISTA DE ESPERA / NÃO AVANÇAR]
+Motivo: [Justificativa baseada nos dados reais]
+
+## 🎯 PLANO DE AÇÃO — TOP 5 MELHORIAS
+1-5. [Ação específica + impacto estimado: +X pontos]`
+    );
+    const match = result.match(/ATS SCORE FINAL:\s*(\d+)/);
+    if (match) {
+      const score = parseInt(match[1]);
+      const col = score>=90?'#10B981':score>=80?'#60A5FA':score>=70?'#F59E0B':score>=60?'#F97316':'#EF4444';
+      const lbl = score>=90?'🏆 TOP CANDIDATO':score>=80?'🚀 ALTO POTENCIAL':score>=70?'✅ BOM MATCH':score>=60?'⚠️ MARGINAL':'❌ NÃO QUALIFICADO';
+      document.getElementById('ats-score-num').textContent = score+'/100';
+      document.getElementById('ats-score-num').style.color = col;
+      document.getElementById('ats-score-lbl').textContent = lbl;
+      document.getElementById('ats-score-lbl').style.color = col;
+      document.getElementById('ats-score-bar').style.width = score+'%';
+      document.getElementById('ats-score-bar').style.background = `linear-gradient(90deg,${col},${col}88)`;
+      document.getElementById('ats-score-block').style.display = 'block';
+    }
+    showRes('ats-out','ats-res', result);
+    incrementUses();
+    document.getElementById('ats-res').scrollIntoView({behavior:'smooth',block:'nearest'});
+  } catch(err) {
+    showErr('ats-err','❌ '+err.message);
+  } finally {
+    setLoading('ats-btn','ats-prog',false,'🎯 Analisar Compatibilidade com a Vaga');
+  }
+}
 </script>
 </body>
 </html>
